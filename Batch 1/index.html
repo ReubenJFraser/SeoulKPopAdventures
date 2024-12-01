@@ -1,0 +1,82 @@
+<!-- index.html: This file contains the original layout for comparison and reference -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/src/assets/sass/main.scss">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <!-- Home Button -->
+      <div class="navbar-brand">
+        <a href="#">
+          <span class="material-symbols-outlined">home</span>
+        </a>
+        <!-- Hamburger Menu Icon -->
+        <button class="navbar-burger" id="navbarBurger">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+
+      <!-- Menu Items -->
+      <div class="navbar-menu" id="navbarMenu">
+        <div class="navbar-item">
+          <span class="material-symbols-outlined">menu_book</span>
+          Menu
+        </div>
+        <div class="navbar-item">
+          <span class="material-symbols-outlined">history</span>
+          History
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="navbar-buttons">
+        <!-- Back Button -->
+        <button class="button is-small is-light" id="backButton" disabled>
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <!-- Forward Button -->
+        <button class="button is-small is-light" id="forwardButton" disabled>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Existing Button -->
+    <button class="button is-small is-primary is-dark">Button</button>
+
+    <!-- Add a Popup -->
+    <div class="popup">
+      <div class="popup-header">Popup Title</div>
+      <div class="popup-buttons">
+        <button class="button is-primary">Primary Action</button>
+        <button class="button is-light">Secondary Action</button>
+      </div>
+    </div>
+
+    <!-- Add a Section with Multiple Buttons -->
+    <div class="button-container">
+      <button class="button is-primary">TripAdvisor</button>
+      <button class="button is-link">Michelin</button>
+      <button class="button is-info">Read More</button>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+    <script>
+        // JavaScript to toggle the navbar menu
+        document.getElementById('navbarBurger').addEventListener('click', function() {
+            const navbarMenu = document.getElementById('navbarMenu');
+            navbarMenu.classList.toggle('is-active');
+        });
+    </script>
+</body>
+</html>
+
+
+

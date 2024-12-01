@@ -1,0 +1,20 @@
+@use 'variables'; // Import to ensure $spacing-unit and other variables are available
+
+@mixin button($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: variables.$spacing-unit / 2; // Adjust button padding using imported variable
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+@function calculate-spacing($multiplier) {
+    @return variables.$spacing-unit * $multiplier; // Using imported variable
+}
+
+  

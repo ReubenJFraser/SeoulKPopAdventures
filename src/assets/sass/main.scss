@@ -1,0 +1,36 @@
+// Import Bulma styles first from node_modules (core framework styles)
+@use "../../../node_modules/bulma/bulma";
+
+// Custom Variables - Updated to be declared after Bulma
+$family-primary: "Nunito", sans-serif !default; // Equivalent to variables.$font-stack
+$primary: #8a4d76 !default; // Equivalent to variables.$primary-color
+$link: #fa7c91 !default; // Equivalent to variables.$secondary-color
+
+// Import Your Custom Components
+@use "mixins";
+@use "navbar";
+@use "popup";
+
+// Import Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+// Global Styles
+body {
+  font-family: $family-primary;
+  color: $primary;
+}
+
+// Override Bulma or add custom styles
+.button {
+  background-color: $primary;
+  color: $link;
+
+  &:hover {
+    background-color: darken($primary, 10%);
+    color: $link;
+  }
+}
+
+
+
+

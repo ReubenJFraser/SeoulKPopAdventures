@@ -1,0 +1,184 @@
+/* styles_bulma_modal_custom.scss: Updated with Tabs, Restaurant Details Styling, and Sass Modules */
+.modal-card {
+  background: linear-gradient(135deg, #d0d1cd, #8a4d76); /* Gradient matches previous popups */
+  border-radius: 15px; /* Rounded corners for a modern look */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Adding a shadow for depth */
+  color: #757763; /* Consistent text color */
+}
+
+.modal-card .modal-card-head {
+  background-color: #e6e6fa; /* Light lavender color for the header */
+  padding: 10px;
+  color: #757763; /* Match text color with your overall theme */
+}
+
+.modal-card .modal-card-body {
+  padding: 32px; /* More comfortable spacing for the content */
+}
+
+.modal-card .modal-card-foot {
+  padding: 16px; /* Consistent spacing */
+  justify-content: space-between; /* Align action buttons properly */
+}
+
+.button {
+  background-color: #fa7c91;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: rgb(251.875, 173.125, 186.25);
+  color: white;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #d0d1cd, #8a4d76); /* Matching gradient for navbar */
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .navbar-brand .material-symbols-outlined {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.navbar .navbar-brand .material-symbols-outlined:hover {
+  color: #fa7c91;
+}
+
+.navbar .navbar-brand .navbar-burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 16px;
+}
+
+.navbar .navbar-brand .navbar-burger:hover {
+  color: #fa7c91;
+}
+
+.navbar .navbar-menu {
+  display: none; /* Hidden by default on smaller screens */
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar .navbar-menu .navbar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar .navbar-menu .navbar-item:hover {
+  color: #fa7c91;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar .navbar-menu .navbar-item .material-symbols-outlined {
+  margin-right: 5px;
+  font-size: 1.2rem;
+}
+
+.navbar .navbar-menu.is-active {
+  display: flex; /* Show when activated (e.g., on burger click) */
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #8a4d76;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+}
+
+.navbar .navbar-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navbar .navbar-buttons .button {
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+}
+
+.navbar .navbar-buttons .button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fa7c91;
+}
+
+.navbar .navbar-buttons .button.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.navbar .navbar-buttons .button .material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+.modal .modal-background {
+  background: rgba(0, 0, 0, 0.5); /* Dark transparent background for modal overlay */
+}
+
+.tabs {
+  margin-bottom: 24px; /* Space between tabs and content */
+}
+
+.tabs .tab {
+  font-weight: bold;
+  padding: 12px 24px;
+}
+
+.tabs .tab:hover {
+  background-color: rgb(167.6139534884, 98.3860465116, 144.9162790698);
+}
+
+.tabs .tab.is-active {
+  border-bottom: 3px solid #fa7c91;
+}
+
+.restaurant-details {
+  margin-bottom: 16px;
+}
+
+#restaurantNameEnglish {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #8a4d76;
+}
+
+#restaurantNameKorean {
+  font-size: 1.25rem;
+  font-weight: normal;
+  color: #fa7c91;
+}
+
+
+
+/*# sourceMappingURL=styles_bulma_modal_custom.css.map */
