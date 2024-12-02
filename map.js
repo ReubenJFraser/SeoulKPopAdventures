@@ -1,5 +1,5 @@
 // map.js: Handles map-specific logic
-import { openBulmaModal } from './modal-navigation.js';
+import { openBulmaModal } from './src/assets/js/modal-navigation.js';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicmV1YmVuZnJhc2VyIiwiYSI6ImNseXhzaDFtMTIxNGwyanB5ZnMxM3NrZXUifQ.DbnJosot3YViMDioceWHYg';
 const map = new mapboxgl.Map({
@@ -65,48 +65,15 @@ map.on('load', () => {
           .setLngLat(coordinates)
           .addTo(map);
 
-        // Adding click listener to the marker for Bulma modal creation and zoom functionality
+        // Adding click listener to the marker for Bulma modal creation
         marker.getElement().addEventListener('click', () => {
           console.log(`Marker at coordinates ${coordinates} clicked.`);
-          
-          // Debugging: Log the current state before flying to the marker
-          console.log('Before flyTo:');
-          console.log('Current Map Center:', map.getCenter());
-          console.log('Current Zoom Level:', map.getZoom());
-
-          // Check if the coordinates are valid
-          if (coordinates && coordinates.length === 2) {
-            console.log('Valid coordinates for flyTo:', coordinates);
-
-            // Zoom into the marker's location and center the map
-            map.flyTo({
-              center: coordinates,  // Coordinates of the clicked marker
-              zoom: 15,             // Zoom level
-              speed: 1.5,           // Smooth transition speed
-              curve: 1              // Smooth curve when flying to the marker
-            });
-
-            // Debugging: Log the new state after flyTo
-            map.on('moveend', () => {
-              console.log('After flyTo:');
-              console.log('New Map Center:', map.getCenter());
-              console.log('New Zoom Level:', map.getZoom());
-            });
-
-            // Call the function to open the modal with the location details
-            openBulmaModal(location);
-          } else {
-            console.log('Invalid coordinates, skipping flyTo.');
-          }
+          // Call a function to open the modal
+          openBulmaModal(location);
         });
       });
     })
     .catch(error => console.error('Error fetching location data:', error));
 });
-
-
-
-
-
 
 

@@ -4,15 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "sass src/assets/sass/styles_bulma_modal_custom.scss:dist/css/main.css --no-source-map --style compressed",
-    "watch": "sass src/assets/sass/styles_bulma_modal_custom.scss:dist/css/main.css --watch"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "sass": "^1.81.0"
+    "vite": "^5.4.10"
   },
   "dependencies": {
-    "bulma": "^1.0.2"
+    "bulma": "^1.0.2",
+    "sass": "^1.81.0"
   }
 }
-
-
