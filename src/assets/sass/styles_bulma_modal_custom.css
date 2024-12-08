@@ -4,6 +4,7 @@
   border-radius: 15px; /* Rounded corners for a modern look */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Adding a shadow for depth */
   color: #757763; /* Consistent text color */
+  padding-top: 50px; /* Ensure modal content doesn't overlap with fixed navigation bar */
 }
 
 .modal-card .modal-card-head {
@@ -34,6 +35,35 @@
 .button:hover {
   background-color: rgb(251.875, 173.125, 186.25);
   color: white;
+}
+
+/* Fixed Navigation Bar (Above the Modal) */
+.modal-nav-bar {
+  position: absolute; /* Position the navigation bar above the modal */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark background for the nav bar */
+  padding: 10px;
+  z-index: 1001; /* Ensure it's above the modal content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow to the navigation bar */
+}
+
+.modal-nav-bar .button {
+  color: white;
+  font-size: 20px;
+}
+
+.modal .modal-background {
+  background: rgba(0, 0, 0, 0.5); /* Dark transparent background for modal overlay */
+}
+
+/* Modal Background Adjustments for Fixed Nav */
+.modal-card {
+  padding-top: 50px; /* Adjust to account for the nav bar at the top */
 }
 
 .navbar {
@@ -140,10 +170,6 @@
 
 .navbar .navbar-buttons .button .material-symbols-outlined {
   font-size: 1.5rem;
-}
-
-.modal .modal-background {
-  background: rgba(0, 0, 0, 0.5); /* Dark transparent background for modal overlay */
 }
 
 .tabs {
