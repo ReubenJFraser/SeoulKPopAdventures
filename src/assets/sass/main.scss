@@ -13,6 +13,9 @@
 @use "navbar";
 @use "popup";
 
+/* Import Custom Styles Placeholder */
+@import "custom"; // Placeholder for project-specific customizations
+
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 
@@ -224,4 +227,5 @@ body {
     color: variables.$secondary-color;
   }
 }
+
 

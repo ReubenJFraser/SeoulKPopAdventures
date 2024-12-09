@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/src/assets/sass/main.css"> <!-- Updated stylesheet link -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="/src/assets/sass/styles_bulma_modal_custom.css"> <!-- Updated stylesheet link -->
+    <link rel="stylesheet" href="/dist/css/styles_bulma_modal_custom.css"> <!-- Updated stylesheet link -->
 </head>
 <body>
     <!-- Include the Centralized Navigation Bar -->
