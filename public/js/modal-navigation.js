@@ -6,6 +6,11 @@ import { historyStack, currentIndex, updateNavigationButtons } from './centraliz
 // Specific log for currentIndex
 console.log("Imported currentIndex in modal-navigation.js:", currentIndex);
 
+// Test logging the state without reassigning
+console.log("Initial historyStack:", historyStack);
+historyStack.push("test-entry"); // Non-disruptive modification for testing
+console.log("Modified historyStack:", historyStack);
+
 // General log for script load confirmation
 console.log("modal-navigation.js loaded successfully."); 
 
@@ -25,7 +30,7 @@ export function openBulmaModal(location) {
     // Update modal title and description dynamically based on the location data
     document.getElementById('modal-title').textContent = `${location.RestaurantName_English} (${location.RestaurantName_Korean})`;
     document.getElementById('modal-description').innerHTML = `
-        <img src="/images/restaurants/${location.ImageURL}" alt="${location.RestaurantName_English}" class="popup-image">
+        <img src="/bulma-test/images/restaurants/${location.ImageURL}" alt="${location.RestaurantName_English}" class="popup-image">
         <p>${location.Description}</p>
         <p>${location.Address}</p>
         <p>Contact: ${location.Telephone}</p>
@@ -47,13 +52,15 @@ export function openBulmaModal(location) {
     `;
 
     // Update the history stack and current index
-    if (currentIndex === historyStack.length - 1 || currentIndex === -1) {
+    let updatedIndex = currentIndex; // Use a local variable to modify the index
+
+    if (updatedIndex === historyStack.length - 1 || updatedIndex === -1) {
         historyStack.push(location); // Add the new location to the history stack
-        currentIndex++;
+        updatedIndex++;
     } else {
-        historyStack = historyStack.slice(0, currentIndex + 1); // Trim forward history if going back
+        historyStack.splice(updatedIndex + 1); // Trim forward history if going back
         historyStack.push(location);
-        currentIndex++;
+        updatedIndex++;
     }
 
     modal.classList.add('is-active', 'modal-fx-fadeInScale');
@@ -104,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
 
 
