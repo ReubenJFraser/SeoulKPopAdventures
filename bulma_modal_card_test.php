@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/Vividz_Foto-AdobeStock_541624410.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/AdobeStock_296116662-Korean_Flag_Optimized.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modal Test - Bulma Integration</title>
     <link rel="stylesheet" href="/src/assets/sass/main.css"> <!-- Updated stylesheet link -->

@@ -1,0 +1,20 @@
+// _regular-footer.scss: Styles for the standard footer layout
+
+.footer {
+    position: static;
+    width: 100%;
+    background-color: $regular-footer-bg;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: $text-color-muted;
+
+    a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

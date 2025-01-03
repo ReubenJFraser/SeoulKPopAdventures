@@ -9,9 +9,11 @@
 /* Import Mixins */
 @use "mixins";
 
-/* Import Custom Components */
-@use "navbar";
-@use "popup";
+/* Import Component Styles */
+@use "navbar";      // Navigation bar styles
+@use "modal";       // Modal styles
+@use "footer-regular";  // Regular footer for non-map modes
+@use "footer-map_mode"; // Map mode footer with triangular design
 
 /* Import Custom Styles Placeholder */
 @import "custom"; // Placeholder for project-specific customizations

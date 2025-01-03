@@ -18,26 +18,37 @@
         <div id="map" style="width: 100%; height: 500px;"></div> <!-- Add the Map div -->
     </div>
 
+    <!-- Button Section for Ratings -->
+    <div class="button-container" id="buttonSection">
+        <button class="button is-primary">
+            <span class="material-symbols-outlined">star</span> TripAdvisor
+        </button>
+        <button class="button is-link">
+            <span class="material-symbols-outlined">restaurant</span> Michelin
+        </button>
+    </div>
+
     <!-- Bulma Modal HTML Structure -->
     <?php include '../modal.php'; ?> <!-- Updated path to modal.php -->
 
-    <!-- Add a Section with Multiple Buttons -->
-    <div class="button-container">
-      <button class="button is-primary">TripAdvisor</button>
-      <button class="button is-link">Michelin</button>
-      <button class="button is-info">Read More</button>
-    </div>
+    <!-- Dynamic Footers -->
+    <footer class="footer map-mode-footer" id="mapFooter" style="display: none;">
+        <!-- Content for map mode footer -->
+    </footer>
 
-    <!-- Footer -->
-    <?php include '../footer.php'; ?> <!-- Updated path to footer.php -->
+    <footer class="footer regular-footer" id="regularFooter">
+        <!-- Content for regular footer -->
+    </footer>
 
     <!-- JavaScript Files -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
-    <script type="module" src="../public/js/navbar.js" defer></script> <!-- Corrected navbar.js reference -->
+    <script type="module" src="../public/js/navbar.js" defer></script>
     <script type="module" src="../public/js/map.js" defer></script>
     <script type="module" src="../public/js/modal-navigation.js" defer></script>
+    <script type="module" src="../public/js/footer.js" defer></script>
 </body>
 </html>
+
 
 
 

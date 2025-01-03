@@ -1,0 +1,111 @@
+// _footer-map_mode.scss: Styles for the triangular footer layout with button container
+
+@import "variables";
+@import "mixins";
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $footer-background-color;
+    padding: 0.5rem;
+
+    .triangle-button {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-color: $primary-color;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &.zoom-out {
+            background-color: $zoom-out-color;
+        }
+
+        &.zoom-in {
+            background-color: $zoom-in-color;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            clip-path: circle(50% at 50% 50%);
+        }
+
+        &.expand-modal {
+            background-color: $expand-modal-color;
+        }
+
+        &.contact {
+            background-color: $contact-color;
+        }
+    }
+
+    .zoom-slider {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 120px;
+            background: transparent;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: $slider-thumb-color;
+                cursor: pointer;
+            }
+
+            &::-moz-range-thumb {
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: $slider-thumb-color;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0.5rem 0;
+
+        .button {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            text-transform: capitalize;
+
+            .material-symbols-outlined {
+                margin-right: 0.5rem;
+            }
+
+            &:hover {
+                background-color: lighten($primary-color, 10%);
+            }
+        }
+    }
+}
+
