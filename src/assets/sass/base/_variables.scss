@@ -1,0 +1,48 @@
+// _variables.scss
+
+// Primary and Secondary Themes
+// Colors for primary and secondary actions
+$primary-color: #4dabf7 !default;       // Blue for primary buttons
+$text-on-primary: #ffffff !default;     // White text for primary buttons
+
+$secondary-color: #fa7c91 !default;     // Pink for secondary buttons
+$text-on-secondary: #ffffff !default;   // White text for secondary buttons
+
+// Supporting Colors
+// Additional colors used across the UI
+$brown: #757763 !default;               // Brown for accents and text
+$beige-light: #d0d1cd !default;         // Light beige for backgrounds
+$beige-lighter: #eff0eb !default;       // Lighter beige for subtle accents
+$lavender: #e6e6fa !default;            // Lavender for headers and highlights
+$light-beige: #f0e6d1 !default;         // Light beige for consistency
+
+// Typography
+$font-stack: '"Nunito", sans-serif' !default; // Font stack for body text
+
+// Spacing and Elevation
+$spacing-unit: 16px !default;           // 1 rem equivalent spacing
+$button-elevation: 4px !default;        // Default elevation for raised buttons
+
+// Bottom App Bar Styles
+// Colors and dimensions for the bottom app bar
+$bottom-app-bar-bg: #ffffff !default;   // White background for bottom app bar
+$bottom-app-bar-fg: #000000 !default;   // Black text and icon color
+$bottom-app-bar-height: 56px !default;  // Height for bottom app bar
+$fab-bg: $primary-color !default;       // Blue background for floating action button (FAB)
+$fab-fg: $text-on-primary !default;     // White text on FAB
+$fab-size: 56px !default;               // Size for FAB
+
+// Footer Styles
+// Colors and dimensions for regular and modal footers
+$regular-footer-bg: #f5f5f5 !default;   // Light gray for regular footer
+$text-color-muted: #6c757d !default;    // Muted gray text color
+$link-color: #007bff !default;          // Blue for links
+$footer-background-color: #f5f5f5 !default; // Light gray for footer backgrounds
+
+// Modal Footer Styles
+$modal-footer-bg: #f8f9fa !default;     // Light gray for modal footer
+$like-color: #ff6b6b !default;          // Red for "like" actions
+$bookmark-color: #4dabf7 !default;      // Blue for bookmark actions
+$block-color: #868e96 !default;         // Gray for block actions
+
+

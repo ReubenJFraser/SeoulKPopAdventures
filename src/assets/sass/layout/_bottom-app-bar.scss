@@ -1,0 +1,57 @@
+// _bottom-app-bar.scss
+// SCSS file for styling the combined bottom app bar, using modular components
+
+@use 'variables' as *;
+@use 'components/fab' as *;
+@use 'components/buttons' as *;
+@use 'components/menu' as *;
+@use 'components/slider' as *;
+
+.bottom-app-bar {
+  background-color: $bottom-app-bar-bg;
+  color: $bottom-app-bar-fg;
+  height: $bottom-app-bar-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  // Using the FAB component
+  .fab {
+    @include fab;
+  }
+
+  // Action items container
+  .action-items {
+    display: flex;
+    gap: $spacing-unit / 2;
+
+    .action-item {
+      @include modal-buttons; // Using buttons mixin for consistent button styles
+    }
+  }
+
+  // Using the Menu Button component
+  .nav-icon {
+    @include modal-menu;
+  }
+}
+
+// Responsive adjustments for mobile and tablet screens
+@media (max-width: 768px) {
+  .bottom-app-bar {
+    padding: 0 8px;
+  }
+
+  .fab {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+

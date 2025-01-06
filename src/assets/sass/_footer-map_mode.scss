@@ -1,7 +1,8 @@
-// _footer-map_mode.scss: Styles for the triangular footer layout with button container
+// _footer-map_mode.scss: Styles for the footer layout with round buttons, menu, and zoom slider
 
-@import "variables";
-@import "mixins";
+@use "variables";
+@use "mixins";
+@use "sass:color";
 
 .footer {
     position: fixed;
@@ -10,102 +11,119 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $footer-background-color;
+    background-color: variables.$footer-background-color;
     padding: 0.5rem;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
 
-    .triangle-button {
-        position: relative;
-        width: 60px;
-        height: 60px;
-        background-color: $primary-color;
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    .button-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: transform 0.2s;
+        gap: 10px;
 
-        &:hover {
-            transform: scale(1.1);
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: variables.$primary-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                background-color: color.adjust(variables.$primary-color, $lightness: 10%);
+                transform: scale(1.1);
+            }
+
+            &:active {
+                transform: scale(1);
+            }
+
+            .material-symbols-outlined {
+                font-size: 1.5rem;
+                color: variables.$text-on-primary;
+            }
         }
+    }
 
-        &.zoom-out {
-            background-color: $zoom-out-color;
-        }
+    .menu-dropdown {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        width: 250px;
+        max-height: 300px;
+        background: variables.$footer-background-color;
+        border: 1px solid variables.$primary-color;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        display: none;
 
-        &.zoom-in {
-            background-color: $zoom-in-color;
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            clip-path: circle(50% at 50% 50%);
-        }
+        ul {
+            list-style: none;
+            margin: 0;
 
-        &.expand-modal {
-            background-color: $expand-modal-color;
-        }
+            li {
+                padding: 0.5rem;
+                cursor: pointer;
+                border-bottom: 1px solid color.adjust(variables.$primary-color, $lightness: 20%);
 
-        &.contact {
-            background-color: $contact-color;
+                &:hover {
+                    background: color.adjust(variables.$primary-color, $lightness: 20%);
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
         }
     }
 
     .zoom-slider {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
 
         input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 120px;
-            background: transparent;
+            width: 150px;
+            height: 6px;
+            background: variables.$primary-color;
+            border-radius: 3px;
+            outline: none;
 
             &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                height: 20px;
                 width: 20px;
-                border-radius: 50%;
-                background: $slider-thumb-color;
-                cursor: pointer;
-            }
-
-            &::-moz-range-thumb {
                 height: 20px;
-                width: 20px;
+                background: #fff;
+                border: 2px solid variables.$primary-color;
                 border-radius: 50%;
-                background: $slider-thumb-color;
                 cursor: pointer;
-            }
-        }
-    }
+                transition: background-color 0.2s ease, transform 0.2s ease;
 
-    .button-container {
-        display: flex;
-        justify-content: space-evenly;
-        margin: 0.5rem 0;
-
-        .button {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            text-transform: capitalize;
-
-            .material-symbols-outlined {
-                margin-right: 0.5rem;
-            }
-
-            &:hover {
-                background-color: lighten($primary-color, 10%);
+                &:hover {
+                    background-color: color.adjust(variables.$primary-color, $lightness: 10%);
+                    transform: scale(1.2);
+                }
             }
         }
     }
 }
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+
+        .zoom-slider input[type="range"] {
+            width: 100px;
+        }
+
+        .menu-dropdown {
+            width: 100%;
+            bottom: auto;
+            top: -250px;
+        }
+    }
+}
+
 

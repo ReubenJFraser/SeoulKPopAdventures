@@ -1,0 +1,21 @@
+// _bookmark-button.scss
+// SCSS file for styling the bookmark button
+
+@use '../variables' as *;
+
+.bookmark-button {
+  background-color: $bookmark-color;
+  color: $text-on-primary;
+  border-radius: 4px;
+  padding: $spacing-unit / 2 $spacing-unit;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($bookmark-color, 10%);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

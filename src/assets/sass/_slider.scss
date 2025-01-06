@@ -1,0 +1,28 @@
+.zoom-slider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    input[type="range"] {
+      width: 150px;
+      height: 6px;
+      background: #8a4d76;
+      border-radius: 3px;
+      outline: none;
+      transition: background-color 0.2s ease;
+  
+      &::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+        background: white;
+        border: 2px solid #8a4d76;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+  
+      &:hover::-webkit-slider-thumb {
+        background-color: #fa7c91;
+      }
+    }
+  }
+  

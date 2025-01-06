@@ -11,8 +11,7 @@
     "sass": "^1.81.0"
   },
   "dependencies": {
+    "@material/web": "^2.2.0",
     "bulma": "^1.0.2"
   }
 }
-
-

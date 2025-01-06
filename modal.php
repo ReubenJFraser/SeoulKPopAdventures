@@ -8,19 +8,29 @@
             <!-- Unified ID for the Close Button in the Header -->
             <button class="delete" aria-label="close" id="closeModalButton"></button>
         </header>
-        
+
         <!-- Modal Body (Details about the location) -->
         <section class="modal-card-body">
             <div id="modal-description"></div>
         </section>
 
         <!-- Modal Footer (Close button) -->
-        <!-- Unified ID for the Close Button in the Footer -->
         <footer class="modal-card-foot">
             <button class="button is-success" id="closeModalButton">Close</button>
         </footer>
+
+        <!-- Bottom App Bar (New Addition) -->
+        <div class="bottom-app-bar" role="navigation" aria-label="Bottom Navigation">
+            <button class="nav-icon" aria-label="Open Navigation Drawer">☰</button>
+            <div class="action-items">
+                <button class="action-item" aria-label="Action 1">Action 1</button>
+                <button class="action-item" aria-label="Action 2">Action 2</button>
+            </div>
+            <button class="fab" aria-label="Add New Item">+</button>
+        </div>
     </div>
 </div>
+
 
 
 

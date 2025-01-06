@@ -1,20 +1,44 @@
-// _regular-footer.scss: Styles for the standard footer layout
+@use 'variables';
+@use 'mixins'; // Retained for potential future use
+@use 'sass:color';
+
+// _footer-regular.scss: Styles for the standard footer layout
 
 .footer {
     position: static;
     width: 100%;
-    background-color: $regular-footer-bg;
+    background-color: variables.$regular-footer-bg;
     padding: 1rem;
     text-align: center;
     font-size: 0.875rem;
-    color: $text-color-muted;
+    color: variables.$text-color-muted;
 
     a {
-        color: $link-color;
+        color: variables.$link-color;
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
+            color: color.adjust(variables.$link-color, $lightness: 15%);
+        }
+
+        &:active {
+            color: color.adjust(variables.$link-color, $lightness: -15%);
         }
     }
+
+    p {
+        margin: 0;
+        padding: 0.5rem 0;
+    }
 }
+
+.body {
+    border: 2px dashed blue;
+}
+
+
+
+
+
+  

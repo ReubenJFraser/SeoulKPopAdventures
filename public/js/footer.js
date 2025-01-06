@@ -12,15 +12,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isMapMode) {
             mapFooter.style.display = "flex";
             regularFooter.style.display = "none";
+
+            // Dynamically load map mode-specific functionality
+            import("./footer-map_mode.js")
+                .then((module) => {
+                    module.initializeMapMode();
+                })
+                .catch((err) => console.error("Error loading map mode script:", err));
         } else {
             mapFooter.style.display = "none";
             regularFooter.style.display = "flex";
         }
     }
 
-    // Example: Listen for a mode toggle button to switch between footers
+    // Example toggle functionality
     const modeToggleButton = document.getElementById("toggleModeButton");
-    let isMapMode = false; // Default to regular mode
+    let isMapMode = false;
 
     if (modeToggleButton) {
         modeToggleButton.addEventListener("click", () => {
@@ -29,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Initial setup: Default to regular mode
-    toggleFooter(isMapMode);
+    toggleFooter(isMapMode); // Initial setup
 });
 
 export { toggleFooter };
+

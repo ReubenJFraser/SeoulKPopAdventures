@@ -1,0 +1,7 @@
+@use '../mixins' as *;
+
+@mixin modal-menu {
+  .menu-button {
+    @include modal-menu-button;
+  }
+}

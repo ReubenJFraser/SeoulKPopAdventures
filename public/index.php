@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="../images/Vividz_Foto-AdobeStock_541624410.svg" /> <!-- Updated favicon reference -->
+    <link rel="icon" type="image/svg+xml" href="/images/Vividz_Foto-AdobeStock_541624410.svg" /> <!-- Updated favicon reference -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seoul K-Pop Adventures</title>
-    <link rel="stylesheet" href="../src/assets/sass/main.css"> <!-- Updated path to point to the correct main.css location -->
+
+    <!-- Main site-wide styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Modal-specific styles -->
+    <link rel="stylesheet" href="/css/styles_bulma_modal_custom.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">

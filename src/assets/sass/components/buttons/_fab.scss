@@ -1,0 +1,27 @@
+// _fab.scss
+// SCSS file for styling the Floating Action Button (FAB)
+
+@use 'variables' as *;
+
+@mixin fab {
+  background-color: $fab-bg;
+  color: $fab-fg;
+  width: $fab-size;
+  height: $fab-size;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

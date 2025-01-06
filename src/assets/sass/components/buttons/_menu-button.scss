@@ -1,0 +1,26 @@
+// _buttons.scss
+// SCSS file for general button styles used across the modal
+
+@use '../mixins' as *;
+@use '../variables' as *;
+
+@mixin modal-buttons {
+  .modal-button {
+    @include button(variables.$primary-color, $text-on-primary);
+    margin: calculate-spacing(1);
+    padding: $spacing-unit / 2 $spacing-unit;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: lighten(variables.$primary-color, 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+

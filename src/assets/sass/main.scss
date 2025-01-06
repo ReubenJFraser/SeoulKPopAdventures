@@ -1,7 +1,10 @@
-/* Consolidated main.scss file: Integrating styles from main.scss, styles_bulma_modal_custom.scss, and other SCSS files */
+// Cleaned-up main.scss: General/global styles only
 
 /* Import Bulma core framework styles from node_modules */
 @use "../../../node_modules/bulma/bulma";
+
+/* Import Material Web Elevated Button */
+@use "../../../node_modules/@material/web/button/elevated-button";
 
 /* Import Custom Variables */
 @use "variables";
@@ -11,12 +14,8 @@
 
 /* Import Component Styles */
 @use "navbar";      // Navigation bar styles
-@use "modal";       // Modal styles
 @use "footer-regular";  // Regular footer for non-map modes
-@use "footer-map_mode"; // Map mode footer with triangular design
-
-/* Import Custom Styles Placeholder */
-@import "custom"; // Placeholder for project-specific customizations
+@use "footer-map_mode"; // Map mode footer with round button design
 
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
@@ -27,43 +26,21 @@ body {
   color: variables.$primary-color;
 }
 
-/* Button Styles (Global) */
+/* General Button Styles */
 .button {
+  @include elevated-button.theme;
   background-color: variables.$primary-color;
   color: variables.$secondary-color;
   padding: variables.$spacing-unit / 2;
-  border-radius: 8px;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: darken(variables.$primary-color, 10%);
+    background-color: lighten(variables.$primary-color, 10%);
+    transform: scale(1.1);
     color: variables.$secondary-color;
-  }
-}
-
-/* Modal Card Styles */
-.modal-card {
-  background: linear-gradient(135deg, variables.$beige-light, variables.$primary-color); /* Gradient matches previous popups */
-  border-radius: 15px; /* Rounded corners for a modern look */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Adding a shadow for depth */
-  color: variables.$brown; /* Consistent text color */
-  padding-top: 50px; /* Ensure modal content doesn't overlap with fixed navigation bar */
-
-  .modal-card-head {
-    background-color: variables.$lavender; /* Light lavender color for the header */
-    padding: variables.$spacing-unit * 0.625;
-    color: variables.$brown;
-  }
-
-  .modal-card-body {
-    padding: variables.$spacing-unit * 2;
-  }
-
-  .modal-card-foot {
-    padding: variables.$spacing-unit;
-    justify-content: space-between;
   }
 }
 
@@ -108,7 +85,7 @@ body {
   }
 
   .navbar-menu {
-    display: none; /* Hidden by default on smaller screens */
+    display: none;
     align-items: center;
     gap: variables.$spacing-unit;
 
@@ -131,7 +108,7 @@ body {
     }
 
     &.is-active {
-      display: flex; /* Show when activated (e.g., on burger click) */
+      display: flex;
       flex-direction: column;
       position: absolute;
       top: 100%;
@@ -170,27 +147,6 @@ body {
       .material-symbols-outlined {
         font-size: 1.5rem;
       }
-    }
-  }
-}
-
-/* Popup Styles */
-.popup {
-  background: linear-gradient(135deg, variables.$lavender, variables.$light-beige);
-  border-radius: 8px;
-  padding: mixins.calculate-spacing(1);
-
-  .popup-header {
-    font-size: 1.25rem;
-    color: variables.$brown;
-  }
-
-  .popup-buttons {
-    display: flex;
-    justify-content: space-between;
-
-    button {
-      @include mixins.button(variables.$secondary-color, white);
     }
   }
 }
