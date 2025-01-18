@@ -39,5 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleFooter(isMapMode); // Initial setup
 });
 
-export { toggleFooter };
+// Commented out export for now to avoid unused export errors
+// export { toggleFooter };
 

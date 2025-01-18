@@ -1,27 +1,60 @@
 // _fab.scss
-// SCSS file for styling the Floating Action Button (FAB)
+// Refined SCSS file for styling the Floating Action Button (FAB)
 
-@use 'variables' as *;
+@use '../mixins/fab' as fabMixins;
+@use '../../base/variables' as *;
 
-@mixin fab {
-  background-color: $fab-bg;
-  color: $fab-fg;
-  width: $fab-size;
-  height: $fab-size;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+// Explicitly import the SVG for Vite to handle it during the build
+$directions-icon: '/images/directions_alt_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg';
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+.fab {
+  @include fabMixins.fab($fab-size, $fab-bg, $fab-fg);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+  box-shadow: var(--elevated-button-shadow);
+
+  svg {
+    fill: $fab-fg;
+    width: 24px;
+    height: 24px;
   }
 
-  &:active {
-    transform: scale(0.95);
+  &.map-mode {
+    background-color: $fab-bg-filter;
+    svg {
+      content: url(#{$directions-icon});
+    }
+  }
+
+  &.itinerary-mode {
+    background-color: $fab-bg-itinerary;
+    i.material-icons::before {
+      content: 'add';
+    }
+  }
+
+  &.explore-mode {
+    background-color: $fab-bg-explore;
+    i.material-icons::before {
+      content: 'explore';
+    }
+  }
+
+  &.kpop-mode {
+    background-color: $fab-bg-kpop;
+    i.material-icons::before {
+      content: 'queue_music';
+    }
   }
 }
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .fab {
+    width: 48px;
+    height: 48px;
+  }
+}
+

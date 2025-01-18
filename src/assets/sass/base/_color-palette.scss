@@ -1,0 +1,25 @@
+// _color-palette.scss
+
+// Core Colors
+$primary-color: #6b2d72 !default;       // Dark Purple for primary buttons and text
+$secondary-color: #fbaffe !default;     // Light Pink for secondary buttons
+$text-on-primary: #ffffff !default;     // White text for primary buttons
+$text-on-secondary: $primary-color !default; // Dark Purple text for secondary buttons
+
+// Supporting Colors
+$brown: #757763 !default;               // Brown for accents and text
+$beige-light: #d0d1cd !default;         // Light beige for backgrounds
+$beige-lighter: #eff0eb !default;       // Lighter beige for subtle accents
+$lavender: #f3d7f4 !default;            // Lavender-pink for headers and highlights
+$light-beige: #f0e6d1 !default;         // Light beige for consistency
+
+// Shades and Tints
+$primary-shade: #5a2460 !default;       // Darker shade of primary color
+$primary-tint: lighten($primary-color, 20%) !default; // Lighter tint of primary color
+$secondary-tint: #fcd6ff !default;      // Lighter tint of secondary color
+$secondary-shade: darken($secondary-color, 10%) !default; // Darker shade of secondary color
+
+// Additional Colors
+$success-color: #34712d !default;       // Complementary green for success messages
+$error-color: #712d56 !default;         // Burgundy for error messages
+$link-color: #007bff !default;          // Blue for links

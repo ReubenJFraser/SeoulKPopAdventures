@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById('menuButton');
     const menuDropdown = document.getElementById('menuDropdown');
     const zoomOutButton = document.getElementById('zoomOutButton');
+    const mapFab = document.getElementById('mapFab'); // FAB reference
 
     const sliderRect = sliderLine.getBoundingClientRect();
     const minX = 20; // Slider's minimum x-coordinate
@@ -55,8 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log('Already at minimum zoom level.');
         }
     });
+
+    // FAB functionality
+    if (mapFab) {
+        mapFab.addEventListener('click', () => {
+            console.log("FAB clicked");
+            // Open navigation menu or perform an action
+        });
+    } else {
+        console.warn("FAB element not found.");
+    }
 });
 
 export function initializeMapMode() {
     console.log("Map mode footer initialized.");
 }
+

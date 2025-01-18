@@ -1,21 +1,26 @@
 // _bookmark-button.scss
-// SCSS file for styling the bookmark button
+// Refined SCSS file for styling the bookmark button
 
-@use '../variables' as *;
+@use '../mixins/buttons' as *;
+@use '../../base/variables' as *;
+
+// Define the base color for bookmark button
+$base-color: #4dabf7;
 
 .bookmark-button {
-  background-color: $bookmark-color;
-  color: $text-on-primary;
-  border-radius: 4px;
+  @include bookmark-button($base-color);
   padding: $spacing-unit / 2 $spacing-unit;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: lighten($bookmark-color, 10%);
-  }
+  border-radius: 4px;
+  transition: transform 0.2s ease;
 
   &:active {
     transform: scale(0.95);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .bookmark-button {
+    padding: $spacing-unit / 4 $spacing-unit / 2;
   }
 }

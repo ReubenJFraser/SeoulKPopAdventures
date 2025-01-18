@@ -1,8 +1,12 @@
-@use 'variables';
+// navbar.scss: Modular SCSS file for navigation bar component styles
+
+@use '../base/color-palette' as *;
+@use "../base/variables" as *;
+@use "sass:color";
 
 .navbar {
-  background: linear-gradient(135deg, #d0d1cd, variables.$primary-color);
-  padding: variables.$spacing-unit;
+  background: linear-gradient(135deg, $beige-light, $primary-color);
+  padding: $spacing-unit;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -21,7 +25,7 @@
       color: white;
 
       &:hover {
-        color: variables.$secondary-color;
+        color: $secondary-color;
       }
     }
 
@@ -31,28 +35,28 @@
       cursor: pointer;
       color: white;
       font-size: 1.5rem;
-      margin-left: variables.$spacing-unit;
+      margin-left: $spacing-unit;
 
       &:hover {
-        color: variables.$secondary-color;
+        color: $secondary-color;
       }
     }
   }
 
   .navbar-menu {
-    display: none; // Hidden by default on smaller screens
+    display: none;
     align-items: center;
-    gap: variables.$spacing-unit;
+    gap: $spacing-unit;
 
     .navbar-item {
       display: flex;
       align-items: center;
-      padding: variables.$spacing-unit * 0.5 variables.$spacing-unit;
+      padding: $spacing-unit * 0.5 $spacing-unit;
       color: white;
       font-weight: bold;
 
       &:hover {
-        color: variables.$secondary-color;
+        color: $secondary-color;
         background-color: rgba(255, 255, 255, 0.1);
       }
 
@@ -63,24 +67,24 @@
     }
 
     &.is-active {
-      display: flex; // Show when activated (e.g., on burger click)
+      display: flex;
       flex-direction: column;
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      background: variables.$primary-color;
+      background: $primary-color;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      padding: variables.$spacing-unit;
+      padding: $spacing-unit;
     }
   }
 
   .navbar-buttons {
     display: flex;
-    gap: variables.$spacing-unit;
+    gap: $spacing-unit;
 
     .button {
-      padding: variables.$spacing-unit * 0.5;
+      padding: $spacing-unit * 0.5;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -91,7 +95,7 @@
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.3);
-        color: variables.$secondary-color;
+        color: $secondary-color;
       }
 
       &.is-disabled {

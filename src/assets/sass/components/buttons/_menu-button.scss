@@ -1,26 +1,17 @@
-// _buttons.scss
-// SCSS file for general button styles used across the modal
+// _menu-button.scss
+// Refined SCSS file for styling the menu button in the bottom app bar
 
-@use '../mixins' as *;
-@use '../variables' as *;
+@use '../mixins/buttons' as *;
+@use '../../base/variables' as *;
 
-@mixin modal-buttons {
-  .modal-button {
-    @include button(variables.$primary-color, $text-on-primary);
-    margin: calculate-spacing(1);
-    padding: $spacing-unit / 2 $spacing-unit;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.menu-button {
+  @include modal-menu-button;
+}
 
-    &:hover {
-      background-color: lighten(variables.$primary-color, 10%);
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .menu-button {
+    font-size: 1.25rem;
   }
 }
 

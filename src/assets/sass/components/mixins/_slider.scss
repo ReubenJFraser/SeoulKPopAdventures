@@ -1,0 +1,111 @@
+// _slider.scss: Cleaned and refactored mixin file for reusable slider styles
+
+@use "../../base/color-palette" as *;
+@use "../../base/variables" as *;
+@use "sass:color";
+
+// Mixin for base slider styles
+@mixin base-slider {
+  display: flex;
+  align-items: center;
+  gap: $spacing-unit / 2;
+
+  input[type='range'] {
+    width: 100%;
+    height: $slider-track-height;
+    background-color: $slider-track-inactive-color;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+}
+
+// Mixin for active/inactive track differentiation
+@mixin active-track {
+  input[type='range']::-webkit-slider-runnable-track {
+    background: linear-gradient(
+      to right,
+      $slider-track-active-color 0%,
+      $slider-track-active-color var(--slider-percentage),
+      $slider-track-inactive-color var(--slider-percentage),
+      $slider-track-inactive-color 100%
+    );
+  }
+}
+
+// Mixin for tick marks (discrete sliders)
+@mixin tick-marks($step: 10) {
+  input[type='range'] {
+    &::-webkit-slider-runnable-track {
+      background: repeating-linear-gradient(
+        to right,
+        $slider-track-active-color,
+        $slider-track-active-color $step,
+        $slider-track-inactive-color $step,
+        $slider-track-inactive-color $step * 2
+      );
+    }
+  }
+}
+
+// Mixin for value labels
+@mixin value-labels {
+  .slider-thumb {
+    position: relative;
+
+    &::after {
+      content: attr(data-value);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $primary-color;
+      color: $text-on-primary;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Mixin for the zoom slider with specific dimensions
+@mixin zoom-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  input[type="range"] {
+    width: 150px;
+    height: $slider-track-height + 2px;
+    background: $slider-track-active-color;
+    border-radius: 3px;
+    outline: none;
+    transition: background-color 0.2s ease;
+
+    &::-webkit-slider-thumb {
+      width: $slider-thumb-size;
+      height: $slider-thumb-size;
+      background: $text-on-primary;
+      border: 2px solid $slider-thumb-border;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: lighten($slider-thumb-color, 10%);
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+// Responsive adjustments for smaller screens
+@mixin slider-responsive {
+  @media (max-width: 768px) {
+    input[type='range'] {
+      width: 100px;
+    }
+  }
+}
+

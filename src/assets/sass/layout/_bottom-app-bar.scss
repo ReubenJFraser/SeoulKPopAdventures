@@ -1,11 +1,16 @@
 // _bottom-app-bar.scss
 // SCSS file for styling the combined bottom app bar, using modular components
 
-@use 'variables' as *;
-@use 'components/fab' as *;
-@use 'components/buttons' as *;
-@use 'components/menu' as *;
-@use 'components/slider' as *;
+@use '../base/color-palette' as *; // Import color palette first for color variables
+@use '../base/variables' as *;
+@use '../components/buttons/fab' as *;
+@use '../components/buttons/bookmark-button' as *;
+@use '../components/buttons/menu-button' as *;
+@use '../components/menu' as *;
+@use '../components/slider' as *;
+@use 'sass:color';
+@use '../components/mixins/buttons' as *;
+@use '../components/mixins/menu' as menuMixins;
 
 .bottom-app-bar {
   background-color: $bottom-app-bar-bg;
@@ -23,7 +28,7 @@
 
   // Using the FAB component
   .fab {
-    @include fab;
+    @include fab($fab-size, $fab-bg, $fab-fg);
   }
 
   // Action items container
@@ -38,7 +43,47 @@
 
   // Using the Menu Button component
   .nav-icon {
-    @include modal-menu;
+    @include menuMixins.modal-menu;
+  }
+}
+
+// Mode-Specific Styles
+// The bottom app bar provides consistent access to key actions and navigation across different modes.
+// These modes include map mode, explore mode, and menu mode, with corresponding actions and styles.
+// In map mode, the bottom app bar provides buttons for zoom controls, map filters, and other map-related actions.
+.bottom-app-bar.map-mode {
+  background-color: lighten($primary-color, 20%);
+
+  .app-bar-button {
+    color: $primary-color;
+  }
+}
+
+// Explore Mode
+// In explore mode, the bottom app bar offers navigation buttons to explore different content categories or places.
+.bottom-app-bar.explore-mode {
+  background-color: $secondary-color;
+
+  .app-bar-button {
+    color: $text-on-secondary;
+
+    &:hover {
+      color: lighten($text-on-secondary, 10%);
+    }
+  }
+}
+
+// Menu Mode
+// In menu mode, the bottom app bar displays options for user settings, profile, and other menu-related actions.
+.bottom-app-bar.menu-mode {
+  background-color: $brown;
+
+  .app-bar-button {
+    color: $beige-light;
+
+    &:hover {
+      color: lighten($beige-light, 10%);
+    }
   }
 }
 
@@ -52,6 +97,14 @@
     width: 48px;
     height: 48px;
   }
+
+  .zoom-slider input[type='range'] {
+    width: 100px;
+  }
+
+  .menu-dropdown {
+    width: 100%;
+    bottom: auto;
+    top: -250px;
+  }
 }
-
-

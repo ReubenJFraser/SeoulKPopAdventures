@@ -1,7 +1,68 @@
-@use '../mixins' as *;
+// _menu.scss: Updated SCSS file for the menu button and dropdown
 
-@mixin modal-menu {
-  .menu-button {
-    @include modal-menu-button;
+@use "mixins/general" as *;
+@use "mixins/buttons" as *;
+@use "mixins/menu" as menuMixins; // Aliased to prevent namespace conflict
+@use "../base/color-palette" as *; // Import color palette for color variables
+@use "../base/variables" as *;
+@use "sass:color";
+
+// Styles specific to the menu component
+.menu-dropdown {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 250px;
+  max-height: 300px;
+  background: $modal-footer-bg; // Updated to use modal footer background
+  border: 1px solid $primary-color;
+  border-radius: 8px;
+  padding: $spacing-unit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  display: none;
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      padding: $spacing-unit / 2;
+      cursor: pointer;
+      border-bottom: 1px solid color.adjust($primary-color, $lightness: 20%);
+
+      &:hover {
+        background: color.adjust($primary-color, $lightness: 20%);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// Menu button styles
+.menu-button,
+.nav-icon {
+  background: none;
+  border: none;
+  color: $bottom-app-bar-fg;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: $spacing-unit / 2;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .menu-dropdown {
+    width: 100%;
+    bottom: auto;
+    top: -250px;
   }
 }

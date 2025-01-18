@@ -1,0 +1,76 @@
+// _modal.scss: Refined and updated SCSS file for modals and modal footer styles
+
+@use "mixins/general" as *;
+@use "mixins/buttons" as *;
+@use "mixins/menu" as *;
+@use "mixins/slider" as *;
+@use "../base/variables" as *;
+@use "sass:color";
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    // Hard-coded contextual mode for map modal
+    background-color: $modal-footer-bg-filter;
+    padding: $spacing-unit;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+
+    // Placeholder for future dynamic selection of contextual mode
+    // Future logic will dynamically determine the appropriate background color
+    // based on the current contextual mode (e.g., itinerary, explore, kpop)
+  }
+
+  .close-button {
+    position: absolute;
+    top: $spacing-unit / 2;
+    right: $spacing-unit / 2;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $modal-close-button-color;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($modal-close-button-color, 10%);
+    }
+  }
+
+  .modal-footer {
+    // Updated to use hard-coded contextual mode for map modal
+    background-color: $modal-footer-bg-filter;
+    padding: $spacing-unit;
+    border-top: 1px solid color.adjust($modal-footer-bg-filter, $lightness: -10%);
+
+    // Placeholder for future dynamic selection of contextual mode
+    // Future logic will dynamically determine the appropriate styles for different modes
+  }
+
+  // Responsive adjustments for smaller screens
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 100%;
+      max-width: none;
+      border-radius: 0;
+    }
+  }
+}
+
+// Next Steps:
+// 1. Continue refining the desktop and tablet footer features.
+// 2. Add dynamic contextual mode selection logic in future iterations.
+// 3. Explore additional features for desktop and tablet mode, such as expanded filtering options or a mini-map overview.
+

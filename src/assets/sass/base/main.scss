@@ -1,0 +1,71 @@
+/*
+ This is the compiled CSS file (main.css) used for development and debugging.
+ It is generated automatically during the build process along with its source map (main.css.map).
+ This file is distinct from the main-ph7zUQsI.css (or similarly named file), which is used for production deployment.
+ The production file includes a hash in its name (main-[hash].css) for cache busting purposes.
+*/
+
+// _main.scss: entry point for compiling all styles
+
+/* Import Bulma core framework styles from node_modules */
+@use "bulma/sass" as bulma;
+
+/* Import Material Web Elevated Button */
+@use "@material/web/button/_elevated-button" as elevated-button;
+
+/* Import Color Palette */
+@use "./color-palette" as *;
+
+/* Import Custom Variables */
+@use "./variables" as *;
+
+/* Import Mixins */
+@use "../components/mixins/general";
+@use "../components/mixins/buttons";
+@use "../components/mixins/menu" as menuMixins; // Alias added to resolve namespace conflict
+@use "../components/mixins/slider" as sliderMixins;
+
+/* Import Button Styles */
+@use "../components/buttons/bookmark-button";
+@use "../components/buttons/fab";
+@use "../components/buttons/menu-button";
+
+/* Import Layout Styles */
+@use "../layout/navbar";
+@use "../layout/desktop-footer";
+@use "../layout/bottom-app-bar";
+@use "../layout/sidebar";
+
+/* Import Component Styles */
+@use "../components/tabs";
+@use "../components/restaurant-details";
+@use "../components/menu";
+@use "../components/modal";
+@use "../components/slider";
+
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+/* Global Styles */
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+}
+
+/* General Button Styles */
+.button {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: $spacing-unit / 2;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: lighten($primary-color, 10%);
+    transform: scale(1.1);
+    color: $secondary-color;
+  }
+}
+

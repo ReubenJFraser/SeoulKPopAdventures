@@ -1,5 +1,66 @@
-@use '../mixins' as *;
+// _slider.scss: Refined and reviewed SCSS file for slider component styles
 
-@mixin modal-slider {
-  @include slider;
+@use "../base/color-palette" as *; // Import color palette for color variables
+@use "../base/variables" as *;
+@use "mixins/slider" as sliderMixins;
+@use "sass:color";
+
+.slider {
+  @include sliderMixins.base-slider;
+
+  .slider-thumb {
+    width: 48px; // Minimum touch target width for accessibility
+    height: 48px;
+    background-color: $slider-thumb-color;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  input[type='range'] {
+    @include sliderMixins.active-track;
+    width: 220px; // Default width for desktop and tablet
+    height: 8px; // Track height
+    border-radius: 4px;
+  }
 }
+
+// Zoom slider styles
+.zoom-slider {
+  @include sliderMixins.zoom-slider;
+
+  input[type='range'] {
+    width: 220px; // Updated width for desktop/tablet
+    height: 8px;
+    background: $slider-track-inactive-color;
+    border-radius: 4px;
+    outline: none;
+    transition: background-color 0.2s ease;
+
+    &::-webkit-slider-thumb {
+      width: 48px;
+      height: 48px;
+      background: $slider-thumb-color;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Responsive adjustments for mobile screens
+@media (max-width: 768px) {
+  .zoom-slider input[type='range'] {
+    width: 140px; // Adjust width for smaller screens
+  }
+}
+
+

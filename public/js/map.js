@@ -46,7 +46,7 @@ map.on('load', () => {
   });
 
   // Fetching and adding markers to the map
-  fetch('http://localhost/bulma-test/dist/api.php') // Updated path to match BULMA-TEST structure
+  fetch('../dist/api.php') // Updated path to match BULMA-TEST structure
     .then((response) => response.json())
     .then((locations) => {
       console.log('Fetched locations:', locations);

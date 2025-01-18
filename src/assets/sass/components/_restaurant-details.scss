@@ -1,0 +1,36 @@
+// _restaurant-details.scss: Refined SCSS file for restaurant details component styles
+
+@use '../base/color-palette' as *; // Import color palette for color variables
+@use '../base/variables' as *;
+@use 'sass:color';
+
+.restaurant-details {
+  margin-bottom: $spacing-unit;
+
+  #restaurantNameEnglish {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  #restaurantNameKorean {
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: $secondary-color;
+  }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .restaurant-details {
+    margin-bottom: $spacing-unit * 0.5;
+
+    #restaurantNameEnglish {
+      font-size: 1.25rem;
+    }
+
+    #restaurantNameKorean {
+      font-size: 1rem;
+    }
+  }
+}

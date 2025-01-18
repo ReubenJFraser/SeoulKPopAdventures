@@ -1,0 +1,93 @@
+// _buttons.scss: Refined mixin file for reusable button styles
+
+@use '../../base/color-palette' as *; // Updated to import color palette for color variables
+@use '../../base/variables' as *;
+@use 'sass:color';
+
+// General button mixin for consistent button styles
+@mixin button($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: $spacing-unit / 2;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: 10%);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Mixin for bookmark button with customizable color
+@mixin bookmark-button($base-color) {
+  font-size: 1.5rem;
+  color: $base-color;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: lighten($base-color, 20%);
+  }
+}
+
+// Mixin for modal buttons with consistent styles
+@mixin modal-buttons {
+  background-color: $primary-color;
+  color: $text-on-primary;
+  padding: $spacing-unit / 2;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($primary-color, 10%);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Mixin for modal menu button
+@mixin modal-menu-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba($primary-color, 0.1);
+  }
+
+  &::before {
+    margin-right: 0.5rem;
+  }
+}
+
+// Floating action button (FAB) mixin with customizable size and colors
+@mixin fab($size, $bg-color, $icon-color) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background-color: $bg-color;
+  color: $icon-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

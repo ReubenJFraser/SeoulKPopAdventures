@@ -11,6 +11,12 @@
 
         <!-- Modal Body (Details about the location) -->
         <section class="modal-card-body">
+            <!-- Image Section -->
+            <div class="modal-image">
+                <img id="restaurant-image" src="" alt="Restaurant Image" class="popup-image">
+            </div>
+
+            <!-- Description Section -->
             <div id="modal-description"></div>
         </section>
 

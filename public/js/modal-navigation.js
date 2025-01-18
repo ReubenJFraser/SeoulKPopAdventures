@@ -12,10 +12,21 @@ export function openBulmaModal(location) {
         return;
     }
 
-    // Update modal general content
+    // Update modal title
     document.getElementById('modal-title').textContent = `${location.RestaurantName_English} (${location.RestaurantName_Korean})`;
+
+    // Update modal image
+    const restaurantImage = document.getElementById('restaurant-image');
+    if (restaurantImage) {
+        restaurantImage.src = `/public/images/restaurants/${location.ImageURL}`;
+        restaurantImage.alt = location.RestaurantName_English || "Restaurant Image";
+    } else {
+        console.error('Restaurant image element not found.');
+    }
+
+
+    // Update modal description
     document.getElementById('modal-description').innerHTML = `
-        <img src="/bulma-test/images/restaurants/${location.ImageURL}" alt="${location.RestaurantName_English}" class="popup-image">
         <p>${location.Description}</p>
         <p>${location.Address}</p>
         <p>Contact: ${location.Telephone}</p>
