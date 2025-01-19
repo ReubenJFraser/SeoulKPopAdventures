@@ -1,21 +1,32 @@
-export default {
+import { defineConfig } from 'vite';
+
+export default defineConfig({
   build: {
-      outDir: 'dist', // Output directory for build
-      emptyOutDir: true, // Clean the output directory before building
-      sourcemap: true, // Enable source map generation
-      cssCodeSplit: false, // Prevent CSS code splitting
-      rollupOptions: {
-          input: 'src/assets/sass/base/main.scss',
-          output: {
-              assetFileNames: 'main-[hash][extname]',
-          },
-          external: (id) => {
-              // Exclude images from being processed
-              return id.includes('/images/');
-          },
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: true,
+    cssCodeSplit: false,
+    rollupOptions: {
+      input: 'src/assets/sass/base/main.scss',
+      output: {
+        assetFileNames: 'main-[hash][extname]',
       },
+    },
   },
-};
+  plugins: [
+    {
+      name: 'exclude-non-assets',
+      generateBundle(_, bundle) {
+        for (const file in bundle) {
+          if (file.endsWith('.php') || file.endsWith('.html')) {
+            delete bundle[file];
+          }
+        }
+      },
+    },
+  ],
+});
+
 
   
   

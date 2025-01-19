@@ -37,24 +37,19 @@
     <!-- Bulma Modal HTML Structure -->
     <?php include '../server-side/modal.php'; ?> <!-- Updated path to modal.php -->
 
-    <!-- Dynamic Footers -->
-    <footer class="footer map-mode-footer" id="mapFooter" style="display: none;">
-        <!-- Content for map mode footer -->
-    </footer>
-
-    <footer class="footer regular-footer" id="regularFooter">
-        <!-- Content for regular footer -->
-    </footer>
+    <!-- Include Bottom App Bar -->
+    <?php include '../server-side/bottom-app-bar.php'; ?> <!-- Added bottom app bar -->
 
     <!-- JavaScript Files -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
     <script type="module" src="./js/navbar.js" defer></script>
     <script type="module" src="./js/map.js" defer></script>
     <script type="module" src="./js/modal-navigation.js" defer></script>
-    <script type="module" src="./js/footer.js" defer></script>
+    <script type="module" src="./js/bottom-app-bar.js" defer></script>
 
 </body>
 </html>
+
 
 
 

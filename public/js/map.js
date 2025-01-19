@@ -46,8 +46,13 @@ map.on('load', () => {
   });
 
   // Fetching and adding markers to the map
-  fetch('../dist/api.php') // Updated path to match BULMA-TEST structure
-    .then((response) => response.json())
+  fetch('/public/api.php') // Corrected fetch path for api.php
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+      return response.json();
+    })
     .then((locations) => {
       console.log('Fetched locations:', locations);
 
@@ -85,6 +90,7 @@ map.on('load', () => {
     })
     .catch((error) => console.error('Error fetching location data:', error));
 });
+
 
 
 
