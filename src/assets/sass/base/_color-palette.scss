@@ -6,20 +6,27 @@ $secondary-color: #fbaffe !default;     // Light Pink for secondary buttons
 $text-on-primary: #ffffff !default;     // White text for primary buttons
 $text-on-secondary: $primary-color !default; // Dark Purple text for secondary buttons
 
-// Supporting Colors
-$brown: #757763 !default;               // Brown for accents and text
-$beige-light: #d0d1cd !default;         // Light beige for backgrounds
-$beige-lighter: #eff0eb !default;       // Lighter beige for subtle accents
-$lavender: #f3d7f4 !default;            // Lavender-pink for headers and highlights
-$light-beige: #f0e6d1 !default;         // Light beige for consistency
-
 // Shades and Tints
 $primary-shade: #5a2460 !default;       // Darker shade of primary color
 $primary-tint: lighten($primary-color, 20%) !default; // Lighter tint of primary color
-$secondary-tint: #fcd6ff !default;      // Lighter tint of secondary color
+$secondary-tint: #f3d7f4 !default;      // Lavender-pink as the lighter tint of secondary color
 $secondary-shade: darken($secondary-color, 10%) !default; // Darker shade of secondary color
 
-// Additional Colors
-$success-color: #34712d !default;       // Complementary green for success messages
-$error-color: #712d56 !default;         // Burgundy for error messages
-$link-color: #007bff !default;          // Blue for links
+// Supporting Colors
+$lavender: #f3d7f4 !default;            // Lavender tint
+$beige-light: #d0d1cd !default;         // Light Beige
+$light-beige: #f0e6d1 !default;         // Slightly darker beige
+$text-on-lavender: $primary-color !default; // Dark Purple text on lavender
+
+// Secondary Accent Colors
+$blue-light: #3d9ae3 !default;          // Light blue for interactive states
+$red-light: #ff4131 !default;           // Light red for error messages
+$yellow: #ffce00 !default;              // Yellow for warnings
+$green-light: #40a459 !default;         // Light green for success messages
+
+// Neutral and Background Colors
+$off-black: #121149 !default;           // Deep black for text on dark backgrounds
+$modal-background: $beige-light !default; // Modal background
+
+
+

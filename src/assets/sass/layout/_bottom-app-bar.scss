@@ -1,12 +1,8 @@
-// _bottom-app-bar.scss
-// SCSS file for styling the combined bottom app bar, using modular components
-
-@use '../base/color-palette' as *; // Import color palette first for color variables
+/* Updated _bottom-app-bar.scss */
+@use '../base/color-palette' as *;
 @use '../base/variables' as *;
 @use '../components/buttons/fab' as *;
-@use '../components/buttons/bookmark-button' as *;
 @use '../components/buttons/menu-button' as *;
-@use '../components/menu' as *;
 @use '../components/slider' as *;
 @use 'sass:color';
 @use '../components/mixins/buttons' as *;
@@ -26,31 +22,56 @@
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 
-  // Using the FAB component
   .fab {
     @include fab($fab-size, $fab-bg, $fab-fg);
   }
 
-  // Action items container
   .action-items {
     display: flex;
     gap: $spacing-unit / 2;
 
     .action-item {
-      @include modal-buttons; // Using buttons mixin for consistent button styles
+      @include modal-buttons;
+      font-family: "Material Symbols Outlined";
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      transition: font-variation-settings 0.3s ease, color 0.3s ease;
+
+      &.active {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        color: $primary-color;
+      }
+
+      &:hover {
+        color: lighten($primary-color, 10%);
+      }
     }
   }
 
-  // Using the Menu Button component
   .nav-icon {
     @include menuMixins.modal-menu;
   }
+
+  .zoom-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input[type='range'] {
+      @include slider.zoom-slider;
+    }
+
+    #sliderLabel {
+      margin-top: 0.5rem;
+      color: $text-on-primary;
+      background: $primary-color;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+  }
 }
 
-// Mode-Specific Styles
-// The bottom app bar provides consistent access to key actions and navigation across different modes.
-// These modes include map mode, explore mode, and menu mode, with corresponding actions and styles.
-// In map mode, the bottom app bar provides buttons for zoom controls, map filters, and other map-related actions.
+/* Mode-Specific Styles */
 .bottom-app-bar.map-mode {
   background-color: lighten($primary-color, 20%);
 
@@ -59,8 +80,6 @@
   }
 }
 
-// Explore Mode
-// In explore mode, the bottom app bar offers navigation buttons to explore different content categories or places.
 .bottom-app-bar.explore-mode {
   background-color: $secondary-color;
 
@@ -73,8 +92,6 @@
   }
 }
 
-// Menu Mode
-// In menu mode, the bottom app bar displays options for user settings, profile, and other menu-related actions.
 .bottom-app-bar.menu-mode {
   background-color: $brown;
 
@@ -87,7 +104,7 @@
   }
 }
 
-// Responsive adjustments for mobile and tablet screens
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .bottom-app-bar {
     padding: 0 8px;
@@ -101,10 +118,5 @@
   .zoom-slider input[type='range'] {
     width: 100px;
   }
-
-  .menu-dropdown {
-    width: 100%;
-    bottom: auto;
-    top: -250px;
-  }
 }
+

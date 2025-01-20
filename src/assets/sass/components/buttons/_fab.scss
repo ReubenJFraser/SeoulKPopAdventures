@@ -3,49 +3,38 @@
 
 @use '../mixins/fab' as fabMixins;
 @use '../../base/variables' as *;
-
-// Explicitly import the SVG for Vite to handle it during the build
-$directions-icon: '/images/directions_alt_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg';
+@use '../../base/color-palette' as *;
 
 .fab {
   @include fabMixins.fab($fab-size, $fab-bg, $fab-fg);
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
   z-index: 10;
   box-shadow: var(--elevated-button-shadow);
 
-  svg {
-    fill: $fab-fg;
-    width: 24px;
-    height: 24px;
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    color: $fab-fg;
+    font-size: 24px;
+    transition: font-variation-settings 0.2s ease, transform 0.2s ease;
   }
 
-  &.map-mode {
-    background-color: $fab-bg-filter;
-    svg {
-      content: url(#{$directions-icon});
-    }
+  &:hover {
+    background-color: lighten($fab-bg, 10%);
+    transform: scale(1.05);
   }
 
-  &.itinerary-mode {
-    background-color: $fab-bg-itinerary;
-    i.material-icons::before {
-      content: 'add';
-    }
-  }
-
-  &.explore-mode {
-    background-color: $fab-bg-explore;
-    i.material-icons::before {
-      content: 'explore';
-    }
-  }
-
-  &.kpop-mode {
-    background-color: $fab-bg-kpop;
-    i.material-icons::before {
-      content: 'queue_music';
+  &.active {
+    background-color: $fab-bg-filter; // Highlight for active FAB state
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1;
+      color: lighten($fab-fg, 20%);
     }
   }
 }
@@ -57,4 +46,5 @@ $directions-icon: '/images/directions_alt_24dp_5F6368_FILL0_wght400_GRAD0_opsz24
     height: 48px;
   }
 }
+
 

@@ -1,44 +1,48 @@
-// _fab.scss: Mixins for Floating Action Button (FAB) styles with elevated buttons
+// _fab.scss: Mixins for Floating Action Button (FAB) styles with hover and active states
 
 @use '../../base/variables' as *;
+@use '../../base/color-palette' as *;
+@use './icons' as *; // Import icon-related mixins
 
 @mixin fab($size, $background, $foreground, $elevation: $button-elevation) {
-    width: $size;
-    height: $size;
-    background-color: $background;
-    color: $foreground;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 $elevation 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  width: $size;
+  height: $size;
+  background-color: $background;
+  color: $foreground;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 $elevation 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
 
-    &:hover {
-        box-shadow: 0 ($elevation + 2px) 10px rgba(0, 0, 0, 0.3);
-        transform: scale(1.05);
-    }
+  &:hover {
+    box-shadow: 0 ($elevation + 2px) 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
 
-    &:active {
-        box-shadow: 0 $elevation 6px rgba(0, 0, 0, 0.15);
-        transform: scale(0.95);
-    }
+  &:active {
+    box-shadow: 0 $elevation 6px rgba(0, 0, 0, 0.15);
+    transform: scale(0.95);
+  }
 }
 
-@mixin fab-icon($icon-size) {
-    svg {
-        width: $icon-size;
-        height: $icon-size;
-    }
+@mixin fab-icon($icon-size: $icon-size, $target-size: $icon-target-size) {
+  .material-symbols-outlined {
+    @include icon-target($icon-size, $target-size); // Align icon size and target
+    @include icon-transition(); // Add fill and grade transitions
+  }
 }
 
 // Responsive FAB mixin for smaller screens
 @mixin fab-responsive {
-    @media (max-width: 768px) {
-        .fab {
-            width: 48px;
-            height: 48px;
-        }
+  @media (max-width: 768px) {
+    .fab {
+      width: 48px;
+      height: 48px;
     }
+  }
 }
+
+

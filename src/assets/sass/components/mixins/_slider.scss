@@ -3,22 +3,45 @@
 @use "../../base/color-palette" as *;
 @use "../../base/variables" as *;
 
-@mixin zoom-slider {
-  input[type='range'] {
-    width: 150px;
-    height: $slider-track-height;
-    background: $slider-track-inactive-color;
-    border-radius: 3px;
+@mixin base-slider {
+  width: 150px;
+  height: $slider-track-height;
+  background-color: $slider-track-inactive-color;
+  border-radius: 3px;
+  outline: none;
+  appearance: none;
+  transition: background-color 0.2s ease;
 
-    &::-webkit-slider-thumb {
-      width: $slider-thumb-size;
-      height: $slider-thumb-size;
-      background: $slider-thumb-color;
-      border: 2px solid $slider-thumb-border;
-      border-radius: 50%;
-      cursor: pointer;
+  &:hover {
+    background-color: lighten($slider-track-active-color, 10%);
+  }
+}
+
+@mixin slider-thumb {
+  width: $slider-thumb-size;
+  height: $slider-thumb-size;
+  background-color: $slider-thumb-color;
+  border: 2px solid $slider-thumb-border;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+@mixin tick-marks($steps, $track-width) {
+  position: relative;
+
+  @for $i from 1 through $steps {
+    $position: ($i - 1) / ($steps - 1) * $track-width;
+
+    .slider-tick:nth-child(#{$i}) {
+      left: #{$position}px;
+    }
+
+    .slider-label:nth-child(#{$i}) {
+      left: calc(#{$position}px - 50%);
     }
   }
 }
+
 
 

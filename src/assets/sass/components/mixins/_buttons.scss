@@ -1,7 +1,8 @@
 // _buttons.scss: Refined mixin file for reusable button styles
 
-@use '../../base/color-palette' as *; // Updated to import color palette for color variables
+@use '../../base/color-palette' as *; // Import color palette for color variables
 @use '../../base/variables' as *;
+@use './icons' as *; // Import icon styles
 @use 'sass:color';
 
 // General button mixin for consistent button styles
@@ -24,8 +25,15 @@
   }
 }
 
+// Mixin for buttons with icons
+@mixin button-with-icon($bg-color, $text-color, $icon-size, $target-size) {
+  @include button($bg-color, $text-color);
+  @include icon-target($icon-size, $target-size);
+  @include icon-transition();
+}
+
 // Mixin for bookmark button with customizable color
-@mixin bookmark-button($base-color) {
+@mixin bookmark-button($base-color, $icon-size: $icon-size, $target-size: $icon-target-size) {
   font-size: 1.5rem;
   color: $base-color;
   cursor: pointer;
@@ -34,10 +42,13 @@
   &:hover {
     color: lighten($base-color, 20%);
   }
+
+  @include icon-target($icon-size, $target-size);
+  @include icon-transition();
 }
 
 // Mixin for modal buttons with consistent styles
-@mixin modal-buttons {
+@mixin modal-buttons($icon-size: $icon-size, $target-size: $icon-target-size) {
   background-color: $primary-color;
   color: $text-on-primary;
   padding: $spacing-unit / 2;
@@ -53,10 +64,13 @@
   &:active {
     transform: scale(0.95);
   }
+
+  @include icon-target($icon-size, $target-size);
+  @include icon-transition();
 }
 
 // Mixin for modal menu button
-@mixin modal-menu-button {
+@mixin modal-menu-button($icon-size: $icon-size, $target-size: $icon-target-size) {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem;
@@ -71,6 +85,9 @@
   &::before {
     margin-right: 0.5rem;
   }
+
+  @include icon-target($icon-size, $target-size);
+  @include icon-transition();
 }
 
 // Floating action button (FAB) mixin with customizable size and colors
@@ -90,4 +107,6 @@
   &:hover {
     transform: scale(1.1);
   }
+
+  @include icon-transition();
 }

@@ -1,4 +1,4 @@
-// _modal.scss: Refined and updated SCSS file for modals and modal footer styles
+// _modal.scss: Refined and updated SCSS file for modals and modal content styles
 
 @use "mixins/general" as *;
 @use "mixins/buttons" as *;
@@ -20,8 +20,8 @@
   align-items: center;
 
   .modal-content {
-    // Hard-coded contextual mode for map modal
-    background-color: $modal-footer-bg-filter;
+    // Updated contextual mode for map modal
+    background-color: $modal-content-bg; // Previously $modal-footer-bg-filter
     padding: $spacing-unit;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -49,11 +49,10 @@
     }
   }
 
-  .modal-footer {
-    // Updated to use hard-coded contextual mode for map modal
-    background-color: $modal-footer-bg-filter;
+  .bottom-app-bar {
+    background-color: $bottom-app-bar-bg-filter;
     padding: $spacing-unit;
-    border-top: 1px solid color.adjust($modal-footer-bg-filter, $lightness: -10%);
+    border-top: 1px solid color.adjust($bottom-app-bar-bg-filter, $lightness: -10%);
 
     // Placeholder for future dynamic selection of contextual mode
     // Future logic will dynamically determine the appropriate styles for different modes
@@ -70,7 +69,7 @@
 }
 
 // Next Steps:
-// 1. Continue refining the desktop and tablet footer features.
+// 1. Continue refining the desktop and tablet modal content features.
 // 2. Add dynamic contextual mode selection logic in future iterations.
 // 3. Explore additional features for desktop and tablet mode, such as expanded filtering options or a mini-map overview.
 

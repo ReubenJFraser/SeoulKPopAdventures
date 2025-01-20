@@ -1,0 +1,29 @@
+// _icon-states.scss: Mixin file for hover and active states for icons
+
+@use "../../base/variables" as *; // Import global variables
+
+@mixin icon-states($hover-fill, $hover-grad, $active-fill, $active-grad, $icon-size) {
+  &:hover {
+    font-variation-settings: 
+      'FILL' $hover-fill,
+      'GRAD' $hover-grad,
+      'opsz' $icon-size;
+  }
+
+  &.active {
+    font-variation-settings: 
+      'FILL' $active-fill,
+      'GRAD' $active-grad,
+      'opsz' $icon-size;
+  }
+}
+// @mixin icon-states
+// Use this mixin to define hover and active states for material icons.
+// Parameters:
+// - $hover-fill: Fill value on hover
+// - $hover-grad: Gradient value on hover
+// - $active-fill: Fill value for active state
+// - $active-grad: Gradient value for active state
+// - $icon-size: Optical size of the icon
+
+  

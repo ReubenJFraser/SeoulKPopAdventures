@@ -9,11 +9,13 @@
     <!-- Main site-wide styles -->
     <link rel="stylesheet" href="/dist/css/main.css">
 
-    <!-- Modal-specific styles -->
-    <!-- <link rel="stylesheet" href="/css/styles_bulma_modal_custom.css"> -->
+    <!-- Material Symbols CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
+    <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- Mapbox CSS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
 </head>
 <body>
@@ -49,6 +51,7 @@
     <script type="module" src="./js/restaurant-window.js" defer></script> <!-- Added restaurant-window.js -->
 </body>
 </html>
+
 
 
 
