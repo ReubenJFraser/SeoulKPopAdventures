@@ -1,7 +1,7 @@
 <!-- Bottom App Bar -->
 <div class="bottom-app-bar" role="navigation" aria-label="Bottom Navigation">
     <!-- Global Mode: Default Bottom App Bar -->
-    <div class="global-bottom-app-bar" id="globalBottomAppBar">
+    <div class="global-bottom-app-bar" id="globalBottomAppBar" style="display: none;">
         <div class="content has-text-centered">
             <p>
                 <strong>Seoul K-Pop Adventures</strong> by <a href="#">Your Name</a>. All rights reserved.
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Map Mode: Bottom App Bar -->
-    <div class="map-bottom-app-bar" id="mapBottomAppBar" style="display: none;">
+    <div class="map-bottom-app-bar" id="mapBottomAppBar" style="display: flex;">
         <!-- Navigation Drawer Button -->
         <button class="nav-icon" aria-label="Open Navigation Drawer">☰</button>
 
@@ -39,14 +39,18 @@
             <img src="/public/images/arrow_menu_open_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="Menu Icon">
         </button>
         <div class="zoom-slider">
-            <img src="/public/images/Slider-AdobeStock_595737876.svg" alt="Zoom Slider Icon">
-            <input type="range" id="zoomSlider" min="1" max="20" value="10">
+            <!-- Label for Slider -->
+            <div id="sliderLabel" style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); background: #6b2d72; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">
+                City
+            </div>
+            <input type="range" id="zoomSlider" min="10" max="20" step="3" value="10" aria-label="Zoom Slider">
         </div>
         <button id="zoomOutButton" aria-label="Zoom Out">
             <span class="material-icons">zoom_out_map</span>
         </button>
     </div>
 </div>
+
 
 
 

@@ -43,6 +43,9 @@
 @use "../components/modal";
 @use "../components/slider";
 
+/* Import Restaurant Window Styles */
+@import "../components/_restaurant-window";
+
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 
@@ -68,4 +71,5 @@ body {
     color: $secondary-color;
   }
 }
+
 

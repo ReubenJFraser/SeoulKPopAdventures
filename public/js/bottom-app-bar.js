@@ -1,105 +1,81 @@
-// bottom-app-bar.js: Handles global and map-specific functionality for the bottom app bar
+// Updated JavaScript for the Bottom App Bar with Material Design slider and tick marks
+
+console.log("bottom-app-bar.js initialized");
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded event fired");
+
     const globalAppBar = document.getElementById("globalBottomAppBar");
     const mapAppBar = document.getElementById("mapBottomAppBar");
 
-    const mapFab = document.getElementById("mapFab");
-    const menuButton = document.getElementById("menuButton");
-    const menuDropdown = document.getElementById("menuDropdown");
-    const zoomSlider = document.getElementById("zoomSlider");
-    const zoomOutButton = document.getElementById("zoomOutButton");
-    const sliderHandle = document.getElementById('slider-handle');
-    const sliderLine = document.querySelector('line');
+    console.log("App bar elements located:", { globalAppBar, mapAppBar });
 
-    let isMapMode = false; // Default mode
-    let zoomLevel = 1; // Initial zoom level
-
-    /**
-     * Toggles between global app bar and map-specific app bar.
-     * @param {boolean} isMapMode - True for map mode, false for global mode.
-     */
-    function toggleAppBar(isMapMode) {
-        if (isMapMode) {
-            globalAppBar.style.display = "none";
-            mapAppBar.style.display = "flex";
-        } else {
-            globalAppBar.style.display = "flex";
-            mapAppBar.style.display = "none";
-        }
+    if (!globalAppBar || !mapAppBar) {
+        console.error("Error: Required app bar elements are missing");
+        return;
     }
 
-    // Initialize with the current mode
-    toggleAppBar(isMapMode);
+    const zoomSlider = document.getElementById("zoomSlider");
+    const sliderLabel = document.createElement("div");
+    sliderLabel.id = "sliderLabel";
+    sliderLabel.style.position = "absolute";
+    sliderLabel.style.top = "-24px";
+    sliderLabel.style.left = "50%";
+    sliderLabel.style.transform = "translateX(-50%)";
+    sliderLabel.style.background = "#6b2d72";
+    sliderLabel.style.color = "#fff";
+    sliderLabel.style.padding = "2px 6px";
+    sliderLabel.style.borderRadius = "4px";
+    sliderLabel.style.fontSize = "0.75rem";
 
-    // Event listener for mode toggle (optional)
-    const modeToggleButton = document.getElementById("toggleModeButton");
-    if (modeToggleButton) {
-        modeToggleButton.addEventListener("click", () => {
-            isMapMode = !isMapMode;
-            toggleAppBar(isMapMode);
+    zoomSlider.parentElement.style.position = "relative";
+    zoomSlider.parentElement.appendChild(sliderLabel);
+
+    const zoomLevels = ["City", "District", "3D", "Street View"];
+
+    if (zoomSlider) {
+        zoomSlider.addEventListener("input", (e) => {
+            const value = parseInt(e.target.value, 10);
+            const index = Math.floor((value - 10) / 3); // Calculate based on 4 stops (10, 13, 16, 20)
+            sliderLabel.textContent = zoomLevels[index];
+
+            console.log(`Zoom Level: ${zoomLevels[index]} (${value})`);
         });
+
+        zoomSlider.addEventListener("change", (e) => {
+            console.log(`Zoom Level finalized: ${e.target.value}`);
+        });
+
+        // Initialize slider label to default value
+        zoomSlider.dispatchEvent(new Event("input"));
+    } else {
+        console.warn("Zoom slider element not found.");
     }
 
     // FAB functionality
+    const mapFab = document.getElementById("mapFab");
     if (mapFab) {
         mapFab.addEventListener("click", () => {
             console.log("FAB clicked");
-            // Open navigation menu or perform an action
         });
     } else {
         console.warn("FAB element not found.");
     }
 
-    // Menu button functionality
-    if (menuButton && menuDropdown) {
-        menuButton.addEventListener("click", () => {
-            const isVisible = menuDropdown.style.display === "block";
-            menuDropdown.style.display = isVisible ? "none" : "block";
-        });
+    // Toggle between global and map app bar
+    let isMapMode = true; // Default to map mode
+
+    function toggleAppBar(isMapMode) {
+        console.log(`Toggling app bar to ${isMapMode ? "map mode" : "global mode"}`);
+        globalAppBar.style.display = isMapMode ? "none" : "flex";
+        mapAppBar.style.display = isMapMode ? "flex" : "none";
+        console.log(`App bar state updated: Global=${globalAppBar.style.display}, Map=${mapAppBar.style.display}`);
     }
 
-    // Zoom slider functionality
-    if (zoomSlider) {
-        zoomSlider.addEventListener("input", (e) => {
-            zoomLevel = e.target.value;
-            console.log(`Zoom Level: ${zoomLevel}`);
-            // Update map zoom level dynamically
-        });
-    }
-
-    // Zoom out button functionality
-    if (zoomOutButton) {
-        zoomOutButton.addEventListener("click", () => {
-            zoomLevel = Math.max(zoomLevel - 1, 1); // Ensure zoom level stays above minimum
-            console.log(`Zoom Out: New Zoom Level: ${zoomLevel}`);
-            // Update map zoom level dynamically
-        });
-    }
-
-    // Drag functionality for the slider handle
-    if (sliderHandle && sliderLine) {
-        const sliderRect = sliderLine.getBoundingClientRect();
-        const minX = 20; // Slider's minimum x-coordinate
-        const maxX = 180; // Slider's maximum x-coordinate
-
-        sliderHandle.addEventListener('mousedown', () => {
-            const onMouseMove = (e) => {
-                let newX = e.clientX - sliderRect.left;
-                newX = Math.max(minX, Math.min(maxX, newX));
-
-                sliderHandle.setAttribute('cx', newX);
-
-                // Map the newX position to zoom level
-                zoomLevel = 1 + ((newX - minX) / (maxX - minX)) * 9; // Zoom range 1x to 10x
-                console.log(`Drag Zoom Level: ${zoomLevel.toFixed(1)}x`);
-            };
-
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', () => {
-                document.removeEventListener('mousemove', onMouseMove);
-            }, { once: true });
-        });
-    }
+    toggleAppBar(isMapMode);
 });
+
+
+
+
 

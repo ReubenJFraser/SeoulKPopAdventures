@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulma Demo Page</title>
+    <link rel="stylesheet" href="/dist/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap">
+</head>
+<body>
+    <!-- Demo Page Header -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Bulma Demo Page</h1>
+            <p class="subtitle">Testing customizations for Bulma components.</p>
+        </div>
+    </section>
+
+    <!-- Navbar Component -->
+    <section class="section">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a class="navbar-item">Brand</a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarMenu" class="navbar-menu is-active">
+                    <div class="navbar-start">
+                        <a class="navbar-item">Home</a>
+                        <a class="navbar-item">About</a>
+                    </div>
+                    <div class="navbar-end">
+                        <a class="navbar-item">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Bottom App Bar Component -->
+    <div class="bottom-app-bar" role="navigation" aria-label="Bottom Navigation">
+        <!-- Global Mode: Default Bottom App Bar -->
+        <div class="global-bottom-app-bar" id="globalBottomAppBar">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Seoul K-Pop Adventures</strong> by <a href="#">Your Name</a>. All rights reserved.
+                </p>
+            </div>
+        </div>
+
+        <!-- Map Mode: Bottom App Bar -->
+        <div class="map-bottom-app-bar" id="mapBottomAppBar" style="display: flex;">
+            <!-- Navigation Drawer Button -->
+            <button class="nav-icon" aria-label="Open Navigation Drawer">☰</button>
+
+            <!-- Action Items -->
+            <div class="action-items">
+                <button class="action-item" aria-label="Add to Itinerary">
+                    <span class="material-symbols-outlined">event</span>
+                </button>
+                <button class="action-item" aria-label="Share">
+                    <span class="material-symbols-outlined">share</span>
+                </button>
+            </div>
+
+            <!-- Floating Action Button (FAB) -->
+            <button class="fab" id="mapFab" aria-label="Directions">
+                <img src="/public/images/directions_alt_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="FAB Icon">
+            </button>
+
+            <!-- Menu Button and Slider -->
+            <button id="menuButton" aria-label="Menu">
+                <img src="/public/images/arrow_menu_open_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="Menu Icon">
+            </button>
+            <div class="zoom-slider">
+                <input type="range" id="zoomSlider" min="1" max="20" value="10">
+            </div>
+            <button id="zoomOutButton" aria-label="Zoom Out">
+                <span class="material-symbols-outlined">zoom_out_map</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/public/js/bottom-app-bar.js" type="module" defer></script>
+    <script>
+        console.log("Demo Page Initialized");
+    </script>
+</body>
+</html>
+
+
+
+

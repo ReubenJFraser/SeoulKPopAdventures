@@ -46,9 +46,10 @@
     <script type="module" src="./js/map.js" defer></script>
     <script type="module" src="./js/modal-navigation.js" defer></script>
     <script type="module" src="./js/bottom-app-bar.js" defer></script>
-
+    <script type="module" src="./js/restaurant-window.js" defer></script> <!-- Added restaurant-window.js -->
 </body>
 </html>
+
 
 
 
