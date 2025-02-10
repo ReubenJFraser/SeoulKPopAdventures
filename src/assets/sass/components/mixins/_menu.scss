@@ -1,8 +1,6 @@
-// _menu.scss: Cleaned and refactored mixin file for reusable menu styles
-
+@use "sass:color";
 @use "../../base/color-palette" as *; // Import color palette for color variables
 @use "../../base/variables" as *;
-@use "sass:color";
 
 // Mixin for the modal menu button
 @mixin modal-menu {

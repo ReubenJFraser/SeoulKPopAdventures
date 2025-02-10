@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="360px"
+  height="600px"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Background (light gray) -->
+  <rect x="0" y="0" width="100%" height="100%" fill="#f0f0f0" />
+
+  <!-- MODAL CONTAINER -->
+  <rect
+    id="modal-bg"
+    x="0" y="0"
+    width="360" height="520"
+    fill="#ffffff"
+    stroke="black" stroke-width="2"
+    rx="10" ry="10"
+  />
+
+  <!-- HEADER BAR -->
+  <rect
+    id="header-bar"
+    x="0" y="0"
+    width="360" height="50"
+    fill="#dddddd"
+  />
+  <text
+    x="20" y="30"
+    font-size="16"
+    fill="#000"
+  >
+    Restaurant Name (ENG &amp; KOR)
+  </text>
+
+  <!-- IMAGE PLACEHOLDER -->
+  <rect
+    id="image-placeholder"
+    x="20" y="60"
+    width="320" height="348"
+    fill="none"
+    stroke="black" stroke-width="2"
+  />
+  <text
+    x="65" y="235"
+    font-size="14"
+    fill="#333"
+  >
+    Insert Placeholder Image Here
+  </text>
+
+  <!-- TOP-RIGHT OVERLAY BUTTONS INSIDE IMAGE -->
+  <!-- Dislike (👎) -->
+  <rect
+    x="190" y="70"
+    width="40" height="30"
+    fill="#ff4444"
+    rx="5" ry="5"
+  />
+  <text
+    x="205" y="90"
+    font-size="18"
+  >👎</text>
+
+  <!-- Bookmark Icon States -->
+  <image x="240" y="70" width="40" height="30" href="/images/icons/google_material/bookmark_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" />
+  <image x="240" y="105" width="40" height="30" href="/images/icons/google_material/bookmark_add_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" />
+  <image x="240" y="140" width="40" height="30" href="/images/icons/google_material/bookmark_added_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" />
+  <image x="240" y="175" width="40" height="30" href="/images/icons/google_material/bookmark_remove_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" />
+  
+  <!-- Like States -->
+  <rect
+    x="290" y="70"
+    width="40" height="30"
+    fill="#ffcc00"
+    rx="5" ry="5"
+  />
+  <text
+    x="305" y="90"
+    font-size="18"
+  >❤️💔🤍</text>
+
+  <!-- PRICE CATEGORY BUTTON (Outlined in yellow, near bottom-right of image) -->
+  <rect
+    x="260" y="370"
+    width="60" height="30"
+    fill="none"
+    stroke="#ffcc00" stroke-width="2"
+    rx="5" ry="5"
+  />
+  <text
+    x="275" y="390"
+    fill="#ffcc00"
+    font-size="16"
+  >💰💰</text>
+
+  <!-- REVIEW GRID -->
+  <rect
+    x="20" y="420"
+    width="160" height="40"
+    fill="none"
+    stroke="black" stroke-width="1"
+  />
+  <text x="30" y="445" font-size="14">TripAdvisor</text>
+
+  <rect
+    x="20" y="460"
+    width="160" height="40"
+    fill="none"
+    stroke="black" stroke-width="1"
+  />
+  <text x="30" y="485" font-size="14">⭐⭐⭐⭐⭐</text>
+
+  <rect
+    x="180" y="420"
+    width="160" height="40"
+    fill="none"
+    stroke="black" stroke-width="1"
+  />
+  <text x="190" y="445" font-size="14">Michelin Guide</text>
+
+  <rect
+    x="180" y="460"
+    width="160" height="40"
+    fill="none"
+    stroke="black" stroke-width="1"
+  />
+  <text x="190" y="485" font-size="14">⭐⭐⭐ / Bib G.</text>
+
+  <!-- BOTTOM APP BAR -->
+  <rect id="bottom-app-bar" x="0" y="520" width="360" height="60" fill="#cccccc" rx="10" ry="10" />
+  
+  <!-- "Read More" button on left -->
+  <image x="10" y="530" width="40" height="30" href="/images/icons/google_material/read_more_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" />
+  <text x="55" y="550" fill="#fff" font-size="14">Read More</text>
+
+  <!-- Zoom slider (center) -->
+  <rect x="120" y="540" width="120" height="6" fill="#777777" rx="3" ry="3" />
+  <circle cx="150" cy="543" r="8" fill="#333333" />
+  
+  <!-- FAB (circle) on right with Directions Icon -->
+  <circle cx="320" cy="545" r="20" fill="#ff4081" />
+  <image x="305" y="535" width="30" height="30" href="/images/icons/google_material/directions_alt_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" />
+</svg>
+
+
+

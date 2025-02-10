@@ -7,6 +7,13 @@
 
 // _main.scss: entry point for compiling all styles
 
+/* Import Custom Variables */
+@use "./variables" as variables; // ✅ Ensure variables are available early
+
+@use "sass:color"; // ✅ Ensure color module is available
+
+@use "sass:math"; // ✅ Ensure math module is available
+
 /* Import Bulma core framework styles from node_modules */
 @use "bulma/sass" as bulma;
 
@@ -14,10 +21,7 @@
 @use "@material/web/button/_elevated-button" as elevated-button;
 
 /* Import Color Palette */
-@use "./color-palette" as *;
-
-/* Import Custom Variables */
-@use "./variables" as *;
+@use "./color-palette" as color-palette; // ✅ Ensure namespace to access colors correctly
 
 /* Import Mixins */
 @use "../components/mixins/general";
@@ -44,32 +48,39 @@
 @use "../components/slider";
 
 /* Import Restaurant Window Styles */
-@import "../components/_restaurant-window";
+@use "../components/restaurant-window";
 
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 
 /* Global Styles */
 body {
-  font-family: $font-stack;
-  color: $primary-color;
+  font-family: variables.$font-stack; // ✅ Explicitly reference variables.$font-stack
+  color: color-palette.$primary-color; // ✅ Ensure color-palette namespace is used correctly
 }
 
 /* General Button Styles */
 .button {
-  background-color: $primary-color;
-  color: $secondary-color;
-  padding: $spacing-unit / 2;
+  background-color: color-palette.$primary-color; // ✅ Ensure color-palette namespace is used correctly
+  color: color-palette.$secondary-color; // ✅ Ensure color-palette namespace is used correctly
+  padding: math.div(variables.$spacing-unit, 2); // ✅ Use math.div() for compatibility
   border-radius: 50%;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: lighten($primary-color, 10%);
+    background-color: color.scale(color-palette.$primary-color, $lightness: 10%);
     transform: scale(1.1);
-    color: $secondary-color;
+    color: color-palette.$secondary-color; // ✅ Ensure color-palette namespace is used correctly
   }
 }
+
+
+
+
+
+
+
 
 

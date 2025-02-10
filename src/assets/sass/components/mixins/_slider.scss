@@ -1,8 +1,17 @@
-// _slider.scss: Mixins for reusable slider styles
-
+@use "sass:color"; // Import Sass color functions
 @use "../../base/color-palette" as *;
 @use "../../base/variables" as *;
 
+// ✅ Ensure zoom-slider mixin is correctly defined
+@mixin zoom-slider {
+  width: 100%;
+  height: 4px;
+  background: $slider-track-active-color;
+  border-radius: 2px;
+  transition: background 0.3s ease-in-out;
+}
+
+// ✅ Base slider styles
 @mixin base-slider {
   width: 150px;
   height: $slider-track-height;
@@ -13,10 +22,11 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: lighten($slider-track-active-color, 10%);
+    background-color: color.adjust($slider-track-active-color, $lightness: 10%);
   }
 }
 
+// ✅ Slider thumb mixin
 @mixin slider-thumb {
   width: $slider-thumb-size;
   height: $slider-thumb-size;
@@ -25,8 +35,17 @@
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
+// ✅ Tick marks for discrete steps
 @mixin tick-marks($steps, $track-width) {
   position: relative;
 
@@ -42,6 +61,8 @@
     }
   }
 }
+
+
 
 
 

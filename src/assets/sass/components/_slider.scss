@@ -1,5 +1,6 @@
-// _slider.scss: Refined SCSS for slider styles with tick marks and transitions
+// _slider.scss: Enhanced SCSS for zoom slider animations and right-side transitions
 
+@use "sass:color"; // ✅ Import Sass color functions first
 @use "../base/color-palette" as *;
 @use "../base/variables" as *;
 @use "mixins/slider" as sliderMixins;
@@ -8,17 +9,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* To position labels correctly */
+  position: relative;
+  right: 0; // Ensures alignment with right-side FAB
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &.open {
+    transform: translateX(-10px); // Moves slightly when FAB is active
+    opacity: 1;
+  }
 
   input[type='range'] {
     @include sliderMixins.base-slider;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
 
     &::-webkit-slider-thumb {
       @include sliderMixins.slider-thumb;
+      transition: transform 0.2s ease, background-color 0.2s ease;
 
       &:hover {
         transform: scale(1.2);
-        background-color: lighten($slider-thumb-color, 10%);
+        background-color: color.scale($slider-thumb-color, $lightness: 15%);
+      }
+
+      &:active {
+        transform: scale(1.3);
       }
     }
 
@@ -38,34 +52,57 @@
         $slider-track-inactive-color var(--slider-percentage),
         $slider-track-inactive-color 100%
       );
+      transition: background 0.3s ease-in-out;
     }
   }
 
-  // Tick marks for discrete levels
+  // Tick Marks for Discrete Zoom Levels
   .slider-tick {
     position: absolute;
     height: 4px;
     width: 4px;
     background: $slider-track-active-color;
     border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+
+    &.active {
+      transform: scale(1.4);
+      background: $primary-color;
+    }
   }
 
-  // Labels for discrete levels
+  // Labels for Zoom Levels
   .slider-label {
     position: absolute;
-    top: -20px;
+    top: -24px;
     color: $text-on-primary;
     font-size: 0.75rem;
     text-align: center;
+    background: $primary-color;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
   }
 }
 
-// Responsive adjustments for mobile screens
+/* Responsive adjustments for mobile screens */
 @media (max-width: 768px) {
-  .zoom-slider input[type='range'] {
-    width: 140px;
+  .zoom-slider {
+    right: 5px; // Adjust for smaller screens
+
+    input[type='range'] {
+      width: 120px;
+    }
   }
 }
+
+
 
 
 

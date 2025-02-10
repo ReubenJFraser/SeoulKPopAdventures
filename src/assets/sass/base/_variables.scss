@@ -1,4 +1,5 @@
-@use 'color-palette' as *;
+@use "sass:color"; // ✅ Ensure color functions are available globally
+@use "color-palette" as *;
 
 // Typography
 $font-stack: '"Nunito", sans-serif' !default;
@@ -8,11 +9,20 @@ $bottom-app-bar-bg: $beige-light !default;     // Light Beige background
 $bottom-app-bar-fg: $primary-color !default;   // Dark Purple text and icons
 $bottom-app-bar-height: 56px !default;         // Standard height for bottom app bar
 
+// ✅ Moved Here: Bottom App Bar Transparency
+$bottom-app-bar-bg-filter: rgba($bottom-app-bar-bg, 0.85) !default; // ✅ Slight transparency
+
 // Floating Action Button (FAB)
 $fab-bg: $secondary-color !default;           // Light Pink background
 $fab-fg: $primary-color !default;             // Dark Purple text/icons
 $fab-hover-bg: $lavender !default;            // Lavender for hover state
 $fab-size: 56px !default;                     // Standard FAB size
+
+// FAB active state filter
+$fab-bg-filter: color.adjust($fab-bg, $lightness: 15%) !default;
+
+// Buttons
+$button-elevation: 4px !default; // Default elevation for FAB buttons
 
 // Bottom App Bar
 $bottom-app-bar-bg: $light-beige !default;      // Light Beige for bottom app bar
@@ -20,17 +30,18 @@ $bottom-app-bar-fg: $primary-color !default;    // Dark Purple text for bottom a
 $bottom-app-bar-hover-bg: $secondary-tint !default; // Lavender tint for hover state
 
 // Slider Variables
-$slider-thumb-color: $primary-color !default;                     // Dark Purple thumb
-$slider-track-active-color: lighten($primary-color, 20%) !default; // Lighter purple for active track
-$slider-track-inactive-color: $lavender !default;                  // Lavender for inactive track
-$slider-hover-color: darken($primary-color, 10%) !default;         // Darker purple on hover
-$slider-focus-color: rgba($primary-color, 0.3) !default;           // Transparent purple for focus outline
-$slider-disabled-thumb-color: $beige-light !default;               // Light beige for disabled thumb
-$slider-disabled-track-color: $light-beige !default;               // Very light beige for disabled track
+$slider-thumb-color: $primary-color !default;                              // Dark Purple thumb
+$slider-thumb-border: color.adjust($primary-color, $lightness: -15%) !default; // Adjusted for Dart Sass
+$slider-track-active-color: color.adjust($primary-color, $lightness: 20%) !default; // Adjusted for Dart Sass
+$slider-track-inactive-color: $lavender !default;                          // Lavender for inactive track
+$slider-hover-color: color.adjust($primary-color, $lightness: -10%) !default; // Adjusted for Dart Sass
+$slider-focus-color: rgba($primary-color, 0.3) !default;                   // Transparent purple for focus outline
+$slider-disabled-thumb-color: $beige-light !default;                       // Light beige for disabled thumb
+$slider-disabled-track-color: $light-beige !default;                       // Very light beige for disabled track
 
 // Slider Dimensions
-$slider-thumb-size: 20px !default;                                // Diameter of slider thumb
-$slider-track-height: 4px !default;                               // Height of slider track
+$slider-thumb-size: 20px !default;  // Diameter of slider thumb
+$slider-track-height: 4px !default; // Height of slider track
 
 // Icon Dimensions
 $icon-size: 24px !default;                // Default icon size
@@ -38,8 +49,15 @@ $icon-target-size: 48px !default;         // Default touch target size
 $icon-size-desktop: 20px !default;        // Condensed icon size for desktop
 $icon-target-size-desktop: 40px !default; // Condensed target size for desktop
 
+// Spacing
+$spacing-unit: 8px !default;
+
+// Footer Variables (✅ NEW: Fix missing variable)
+$wordpress-footer-bg-general: $beige-light !default; // Define general footer background color
+$wordpress-footer-fg: $primary-color !default; // ✅ Define footer text color
+
 // Miscellaneous
 $link-color: $blue-light !default;                                // Light blue for links
 $modal-close-button-color: $beige-light !default;                 // Subtle close button color
 
-
+@debug "Font stack: #{$font-stack}";

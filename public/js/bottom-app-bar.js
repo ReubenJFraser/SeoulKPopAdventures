@@ -9,18 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapAppBar = document.getElementById("mapBottomAppBar");
     const zoomSlider = document.getElementById("zoomSlider");
     const mapFab = document.getElementById("mapFab");
+    const sidebar = document.getElementById("sidebar");
+    const sliderLabel = document.getElementById("sliderLabel");
     const actionItems = document.querySelectorAll(".action-item");
 
-    if (!globalAppBar || !mapAppBar || !zoomSlider) {
+    if (!globalAppBar || !mapAppBar || !zoomSlider || !mapFab || !sidebar || !sliderLabel) {
         console.error("Error: Required elements are missing");
         return;
     }
 
-    console.log("App bar elements located:", { globalAppBar, mapAppBar, zoomSlider });
+    console.log("App bar elements located:", { globalAppBar, mapAppBar, zoomSlider, mapFab, sidebar });
 
     // Default states
     const zoomLevels = ["City", "District", "3D", "Street View"];
     let isMapMode = true; // Start in map mode
+    let isSliderOpen = false; // Track if sidebar is open
 
     /**
      * Toggles between global app bar and map-specific app bar.
@@ -35,27 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize app bar state
     toggleAppBar(isMapMode);
 
-    // Create and style slider label dynamically
-    const sliderLabel = document.createElement("div");
-    sliderLabel.id = "sliderLabel";
-    sliderLabel.style.position = "absolute";
-    sliderLabel.style.top = "-24px";
-    sliderLabel.style.left = "50%";
-    sliderLabel.style.transform = "translateX(-50%)";
-    sliderLabel.style.background = "#6b2d72";
-    sliderLabel.style.color = "#fff";
-    sliderLabel.style.padding = "2px 6px";
-    sliderLabel.style.borderRadius = "4px";
-    sliderLabel.style.fontSize = "0.75rem";
-
-    zoomSlider.parentElement.style.position = "relative";
-    zoomSlider.parentElement.appendChild(sliderLabel);
-
-    // Slider functionality
+    // Smooth Zoom Slider Animations
     zoomSlider.addEventListener("input", (e) => {
         const value = parseInt(e.target.value, 10);
         const index = Math.floor((value - 10) / 3); // Map slider values to discrete stops
         sliderLabel.textContent = zoomLevels[index];
+        sliderLabel.classList.add("visible"); // Fade in label
         console.log(`Zoom Level: ${zoomLevels[index]} (${value})`);
 
         // Apply active/inactive states to action items if needed
@@ -66,20 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     zoomSlider.addEventListener("change", (e) => {
         console.log(`Zoom Level finalized: ${e.target.value}`);
+        setTimeout(() => sliderLabel.classList.remove("visible"), 800); // Fade out label after delay
     });
 
     // Initialize slider label
     zoomSlider.dispatchEvent(new Event("input"));
 
-    // FAB functionality
-    if (mapFab) {
-        mapFab.addEventListener("click", () => {
-            console.log("FAB clicked");
-            // Implement FAB functionality (e.g., opening navigation)
-        });
-    } else {
-        console.warn("FAB element not found.");
-    }
+    // FAB functionality (Controls the slider menu)
+    mapFab.addEventListener("click", () => {
+        console.log("FAB clicked - Toggling sidebar");
+
+        // Toggle slider visibility
+        isSliderOpen = !isSliderOpen;
+        sidebar.classList.toggle("open", isSliderOpen);
+        
+        // Animate FAB movement into the sidebar
+        if (isSliderOpen) {
+            mapFab.classList.add("fab-in-slider");
+            mapFab.innerHTML = `<span class="material-symbols-outlined">close</span>`;
+        } else {
+            mapFab.classList.remove("fab-in-slider");
+            mapFab.innerHTML = `<span class="material-symbols-outlined">menu_open</span>`;
+        }
+    });
 
     // Action item hover/active functionality
     actionItems.forEach((item) => {
@@ -99,6 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
 
 
 

@@ -1,5 +1,6 @@
 // _desktop-footer.scss: Updated SCSS file for desktop footer layout
 
+@use "sass:color"; // ✅ Import Sass color functions first
 @use '../base/color-palette' as *; // Import color palette for color variables
 @use '../base/variables' as *;           // Import custom variables
 @use '../components/buttons/fab' as *;   // Floating action button styles
@@ -7,7 +8,6 @@
 @use '../components/buttons/menu-button' as *;     // Menu button styles
 @use '../components/menu' as *;           // Menu component styles
 @use '../components/slider' as *;         // Slider component styles
-@use 'sass:color';                        // Built-in Sass color functions
 
 .desktop-footer {
     position: static;

@@ -1,0 +1,49 @@
+<!-- Bottom App Bar -->
+<div class="bottom-app-bar" role="navigation" aria-label="Bottom Navigation">
+    <!-- Global Mode: Default Bottom App Bar -->
+    <div class="global-bottom-app-bar" id="globalBottomAppBar" style="display: none;">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Seoul K-Pop Adventures</strong> by <a href="#">Your Name</a>. All rights reserved.
+            </p>
+            <p>
+                <a href="#contact">
+                    <span class="material-symbols-outlined">contact_mail</span> Contact Us
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Map Mode: Bottom App Bar -->
+    <div class="map-bottom-app-bar" id="mapBottomAppBar" style="display: flex;">
+        
+        <!-- Read More Button (Bottom-Left) -->
+        <button class="read-more-button" id="readMoreButton" aria-label="Read More">
+            <img src="/images/icons/google_material/read_more_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="Read More Icon">
+        </button>
+
+        <!-- Zoom Slider (Centered) -->
+        <div class="zoom-slider">
+            <md-slider id="zoomSlider" min="10" max="20" step="3" value="10" aria-label="Zoom Slider"></md-slider>
+            <div id="sliderLabel" class="slider-label">City</div>
+        </div>
+
+        <!-- Floating Action Button (FAB) - Opens the Sidebar Menu -->
+        <md-fab id="mapFab" class="fab-button" aria-label="Open Menu">
+            <button>
+                <img src="/images/icons/google_material/menu_open_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="Menu Open Icon">
+            </button>
+        </md-fab>
+
+        <!-- Sidebar (Right-Side Navigation) -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-content">
+                <p>Navigation Menu</p>
+                <button class="close-sidebar">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

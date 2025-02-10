@@ -1,11 +1,10 @@
-// _menu.scss: Updated SCSS file for the menu button and dropdown
-
+@use "sass:color"; // ✅ Ensure color module is available first
+@use "sass:math";  // ✅ Ensure math module is available for division fixes
+@use "../base/variables" as *;  // ✅ Import variables early
+@use "../base/color-palette" as *; // ✅ Import color-palette after variables
 @use "mixins/general" as *;
 @use "mixins/buttons" as *;
-@use "mixins/menu" as menuMixins; // Aliased to prevent namespace conflict
-@use "../base/color-palette" as *; // Import color palette for color variables
-@use "../base/variables" as *;
-@use "sass:color";
+@use "mixins/menu" as menuMixins; // ✅ Keep alias to prevent namespace conflict
 
 // Styles specific to the menu component
 .menu-dropdown {
@@ -27,7 +26,7 @@
     margin: 0;
 
     li {
-      padding: $spacing-unit / 2;
+      padding: math.div($spacing-unit, 2); // ✅ Replaced `/` with `math.div()`
       cursor: pointer;
       border-bottom: 1px solid color.adjust($primary-color, $lightness: 20%);
 
@@ -50,7 +49,7 @@
   color: $bottom-app-bar-fg;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: $spacing-unit / 2;
+  padding: math.div($spacing-unit, 2); // ✅ Replaced `/` with `math.div()`
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
@@ -66,3 +65,4 @@
     top: -250px;
   }
 }
+

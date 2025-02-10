@@ -1,0 +1,35 @@
+<!-- modal.php: Dynamic Modal Component -->
+<div id="bulmaMapModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <!-- Modal Header -->
+        <header class="modal-card-head">
+            <p id="modal-title" class="modal-card-title">Details</p>
+            <button class="delete" aria-label="close" id="closeModalButton"></button>
+        </header>
+
+        <!-- Modal Body -->
+        <section class="modal-card-body">
+            <?php
+            // Check if markerType is provided
+            if (isset($_POST['markerType'])) {
+                $markerType = $_POST['markerType'];
+
+                // Dynamically include category-specific content
+                switch ($markerType) {
+                    case 'restaurant':
+                        include 'restaurant-window.php';
+                        break;
+                    case 'touristSite':
+                        include 'tourist-site-window.php'; // Placeholder for future categories
+                        break;
+                    default:
+                        echo '<p>Error: Unknown marker type.</p>';
+                }
+            } else {
+                echo '<p>Error: Marker type not provided.</p>';
+            }
+            ?>
+        </section>
+    </div>
+</div>

@@ -1,8 +1,6 @@
-// navbar.scss: Modular SCSS file for navigation bar component styles
-
+@use "sass:color";
 @use '../base/color-palette' as *;
 @use "../base/variables" as *;
-@use "sass:color";
 
 .navbar {
   background: linear-gradient(135deg, $beige-light, $primary-color);

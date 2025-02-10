@@ -1,9 +1,9 @@
 // _buttons.scss: Refined mixin file for reusable button styles
 
+@use "sass:color"; // ✅ Import Sass color functions first
 @use '../../base/color-palette' as *; // Import color palette for color variables
 @use '../../base/variables' as *;
 @use './icons' as *; // Import icon styles
-@use 'sass:color';
 
 // General button mixin for consistent button styles
 @mixin button($bg-color, $text-color) {
@@ -40,7 +40,7 @@
   transition: color 0.3s ease;
 
   &:hover {
-    color: lighten($base-color, 20%);
+    color: color.scale($base-color, $lightness: 20%);
   }
 
   @include icon-target($icon-size, $target-size);
@@ -58,7 +58,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: lighten($primary-color, 10%);
+    background-color: color.scale($primary-color, $lightness: 10%);
   }
 
   &:active {
@@ -109,4 +109,9 @@
   }
 
   @include icon-transition();
+}
+
+// Mixin for smooth icon transitions
+@mixin icon-transition() {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }

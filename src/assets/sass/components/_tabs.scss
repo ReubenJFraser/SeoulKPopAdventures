@@ -1,8 +1,6 @@
-// _tabs.scss: Refined SCSS file for tabs component styles
-
+@use "sass:color"; // ✅ Import Sass color functions first
 @use '../base/color-palette' as *; // Import color palette for color variables
 @use '../base/variables' as *;
-@use 'sass:color';
 
 .tabs {
   margin-bottom: $spacing-unit * 1.5;

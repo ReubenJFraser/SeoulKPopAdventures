@@ -1,4 +1,4 @@
-// _color-palette.scss
+@use "sass:color"; // ✅ Import Sass color functions
 
 // Core Colors
 $primary-color: #6b2d72 !default;       // Dark Purple for primary buttons and text
@@ -8,15 +8,26 @@ $text-on-secondary: $primary-color !default; // Dark Purple text for secondary b
 
 // Shades and Tints
 $primary-shade: #5a2460 !default;       // Darker shade of primary color
-$primary-tint: lighten($primary-color, 20%) !default; // Lighter tint of primary color
+$primary-tint: color.adjust($primary-color, $lightness: 20%) !default; // ✅ Updated for Dart Sass
 $secondary-tint: #f3d7f4 !default;      // Lavender-pink as the lighter tint of secondary color
-$secondary-shade: darken($secondary-color, 10%) !default; // Darker shade of secondary color
+$secondary-shade: color.adjust($secondary-color, $lightness: -10%) !default; // ✅ Updated for Dart Sass
 
 // Supporting Colors
 $lavender: #f3d7f4 !default;            // Lavender tint
 $beige-light: #d0d1cd !default;         // Light Beige
 $light-beige: #f0e6d1 !default;         // Slightly darker beige
 $text-on-lavender: $primary-color !default; // Dark Purple text on lavender
+
+// ✅ NEW: Sidebar and Menu Mode Colors
+$sidebar-bg: $beige-light !default; // ✅ Define sidebar background color
+$brown: #795548 !default; // ✅ Define brown color for menu mode
+
+// ✅ NEW: Bookmark Button Color
+$bookmark-blue: #4dabf7 !default; // ✅ Define bookmark button color
+
+// ✅ NEW: Modal Colors
+$modal-bg: #ffffff !default; // ✅ Define background for restaurant modal
+$modal-content-bg: $modal-bg !default; // ✅ Define content background for modal
 
 // Secondary Accent Colors
 $blue-light: #3d9ae3 !default;          // Light blue for interactive states
@@ -27,6 +38,5 @@ $green-light: #40a459 !default;         // Light green for success messages
 // Neutral and Background Colors
 $off-black: #121149 !default;           // Deep black for text on dark backgrounds
 $modal-background: $beige-light !default; // Modal background
-
 
 

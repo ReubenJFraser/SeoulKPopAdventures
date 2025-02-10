@@ -1,11 +1,11 @@
-// _modal.scss: Refined and updated SCSS file for modals and modal content styles
-
+@use "sass:color";
+@use "sass:math"; // ✅ Ensure math module is imported
 @use "mixins/general" as *;
 @use "mixins/buttons" as *;
 @use "mixins/menu" as *;
 @use "mixins/slider" as *;
 @use "../base/variables" as *;
-@use "sass:color";
+@use "../base/color-palette" as *; // ✅ Ensure proper color reference
 
 .modal {
   display: none;
@@ -20,23 +20,18 @@
   align-items: center;
 
   .modal-content {
-    // Updated contextual mode for map modal
-    background-color: $modal-content-bg; // Previously $modal-footer-bg-filter
+    background-color: $modal-content-bg; // ✅ Use defined variable
     padding: $spacing-unit;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 600px;
-
-    // Placeholder for future dynamic selection of contextual mode
-    // Future logic will dynamically determine the appropriate background color
-    // based on the current contextual mode (e.g., itinerary, explore, kpop)
   }
 
   .close-button {
     position: absolute;
-    top: $spacing-unit / 2;
-    right: $spacing-unit / 2;
+    top: math.div($spacing-unit, 2); // ✅ Correct math module reference
+    right: math.div($spacing-unit, 2);
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -45,20 +40,25 @@
     transition: color 0.3s ease;
 
     &:hover {
-      color: darken($modal-close-button-color, 10%);
+      color: color.adjust($modal-close-button-color, $lightness: -10%);
     }
   }
 
+  // ✅ Default mode: Bottom App Bar is semi-transparent for map visibility
   .bottom-app-bar {
     background-color: $bottom-app-bar-bg-filter;
     padding: $spacing-unit;
     border-top: 1px solid color.adjust($bottom-app-bar-bg-filter, $lightness: -10%);
-
-    // Placeholder for future dynamic selection of contextual mode
-    // Future logic will dynamically determine the appropriate styles for different modes
   }
 
-  // Responsive adjustments for smaller screens
+  // ✅ Expanded mode: Bottom App Bar is solid for consistency
+  &.expanded {
+    .bottom-app-bar {
+      background-color: $bottom-app-bar-bg; // ✅ Solid background in expanded mode
+      border-top: 1px solid color.adjust($bottom-app-bar-bg, $lightness: -10%);
+    }
+  }
+
   @media (max-width: 768px) {
     .modal-content {
       width: 100%;
@@ -68,8 +68,4 @@
   }
 }
 
-// Next Steps:
-// 1. Continue refining the desktop and tablet modal content features.
-// 2. Add dynamic contextual mode selection logic in future iterations.
-// 3. Explore additional features for desktop and tablet mode, such as expanded filtering options or a mini-map overview.
 

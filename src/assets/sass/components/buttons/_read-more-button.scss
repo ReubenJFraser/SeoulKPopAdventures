@@ -1,0 +1,26 @@
+// _read-more-button.scss
+// Refined SCSS file for styling the "Read More" button
+
+@use "sass:color"; // ✅ Import Sass color functions first
+@use '../mixins/buttons' as *;
+@use '../mixins/ripple-elevation' as rippleUtils; // Added for ripple and elevation
+@use '../../base/variables' as *;
+
+.read-more-button {
+  @include standard-button;
+  font-size: 1rem;
+  padding: $spacing-unit;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: $primary-color;
+  background-color: $bottom-app-bar-bg;
+
+  @include rippleUtils.elevation(4); // Apply elevation
+  @include rippleUtils.ripple(rgba($primary-color, 0.1), rgba($primary-color, 0.2)); // Apply ripple effects
+
+  &:hover {
+    background-color: color.scale($bottom-app-bar-bg, $lightness: 10%);
+  }
+}
+
+
