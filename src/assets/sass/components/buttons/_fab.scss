@@ -1,0 +1,71 @@
+// _fab.scss
+// Enhanced styling for the Floating Action Button (FAB)
+
+@use "sass:color"; // ✅ Import Sass color functions first
+@use '../mixins/fab' as fabMixins;
+@use '../../base/variables' as *;
+@use '../../base/color-palette' as *;
+
+.fab {
+  @include fabMixins.fab($fab-size, $fab-bg, $fab-fg);
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  box-shadow: var(--elevated-button-shadow);
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    color: $fab-fg;
+    font-size: 24px;
+    transition: font-variation-settings 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover {
+    background-color: color.scale($fab-bg, $lightness: 10%);
+    transform: scale(1.1);
+  }
+
+  &.active {
+    background-color: $fab-bg-filter; // Highlight for active FAB state
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1;
+      color: color.scale($fab-fg, $lightness: 20%);
+    }
+  }
+
+  // ✅ FAB movement into the sidebar when it opens (FIXED)
+  &.fab-in-sidebar {
+    transform: translateX(-200px) scale(0.85); // Moves into the sidebar
+    background-color: color.scale($fab-bg, $lightness: -10%);
+  }
+}
+
+// ✅ Sidebar open state: FAB moves inside
+.sidebar.open .fab {
+  transform: translateX(-200px) scale(0.85);
+  opacity: 0.8;
+}
+
+// ✅ Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .fab {
+    width: 48px;
+    height: 48px;
+  }
+
+  .fab-in-sidebar {
+    transform: translateX(-150px) scale(0.85);
+  }
+}
+
+
+
+
+
+

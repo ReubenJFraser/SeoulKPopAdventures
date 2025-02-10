@@ -1,0 +1,56 @@
+// _general.scss: Refined mixin file for general-purpose utility styles
+
+@use "../../base/variables" as *;
+@use "sass:math";
+
+// Utility mixin for consistent spacing
+@mixin spacing($multiplier) {
+  margin: 0;
+  padding: math.div($spacing-unit * $multiplier, 1);
+}
+
+// Mixin for flex centering elements
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin for box-shadow with customizable intensity
+@mixin box-shadow($intensity: 0.1) {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, $intensity);
+}
+
+// Mixin for text truncation (ellipsis)
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Mixin for border-radius with customizable value
+@mixin border-radius($radius: 4px) {
+  border-radius: $radius;
+}
+
+// Mixin for transition with customizable properties and duration
+@mixin transition($properties: all, $duration: 0.3s, $timing-function: ease) {
+  transition: $properties $duration $timing-function;
+}
+
+// Mixin for applying icon target size and alignment
+@mixin icon-target($icon-size, $target-size) {
+  width: $target-size;
+  height: $target-size;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  svg, i {
+    font-size: $icon-size;
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+
+

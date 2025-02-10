@@ -1,0 +1,19 @@
+// _restaurant-window.scss: Styles for concise and expanded restaurant windows
+
+@use '../base/color-palette' as *; // ✅ Ensure correct color palette import
+
+#restaurant-window {
+    position: absolute;
+    bottom: var(--bottom-app-bar-height);
+    height: 50%;
+    width: 100%;
+    background: $modal-bg; // ✅ Use defined variable
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: height 0.3s ease;
+
+    &.expanded {
+        height: calc(100vh - var(--navbar-height) - var(--bottom-app-bar-height));
+    }
+}
+

@@ -1,0 +1,15 @@
+// _ripple-elevation.scss: Ripple and elevation effects for Material Web components
+
+@use "../../base/variables" as *;
+
+@mixin ripple($hover-color, $pressed-color, $opacity-hover: 0.1, $opacity-pressed: 0.2) {
+  --md-ripple-hover-color: $hover-color;
+  --md-ripple-hover-opacity: $opacity-hover;
+  --md-ripple-pressed-color: $pressed-color;
+  --md-ripple-pressed-opacity: $opacity-pressed;
+}
+
+@mixin elevation($level: 4) {
+  box-shadow: var(--md-elevation-level, $level);
+}
+

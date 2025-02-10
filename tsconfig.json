@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2022", // Modern JavaScript features for better compatibility with Lit
+    "module": "esnext", // Use ES Modules for better compatibility
+    "moduleResolution": "node", // Required for resolving npm packages
+    "experimentalDecorators": true, // Enables decorators for Lit and Material Web
+    "useDefineForClassFields": false, // Ensures compatibility with Lit decorators
+    "strict": true, // Enables all strict type-checking options
+    "esModuleInterop": true, // Eases support for importing CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Prevents inconsistent casing in imports
+
+    /* Emit */
+    "outDir": "./dist", // Output directory for compiled JavaScript files
+    "rootDir": "./src", // Specifies the source files directory
+    "sourceMap": true, // Generate source maps for debugging
+    "inlineSources": true, // Include source code in the sourcemaps
+
+    /* JavaScript Support */
+    "allowJs": true, // Allow JavaScript files to be part of the project
+    "checkJs": false, // Disable type-checking in JavaScript files
+
+    /* Type Checking */
+    "skipLibCheck": true, // Skip type checking in declaration files for dependencies
+
+    /* TypeScript Extensions */
+    "types": ["lit"], // Include type definitions for Lit
+    "paths": {
+      "@material/web/*": ["./*"] // Optional: Adjust this if you need specific paths for Material Web
+    }
+  },
+  "include": ["src/**/*"], // Include all files in the src directory
+  "exclude": ["node_modules", "dist"] // Exclude unnecessary directories
+}
+

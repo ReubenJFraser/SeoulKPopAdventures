@@ -1,0 +1,17 @@
+// _menu-button.scss
+// Refined SCSS file for styling the menu button in the bottom app bar
+
+@use '../mixins/buttons' as *;
+@use '../../base/variables' as *;
+
+.menu-button {
+  @include modal-menu-button;
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .menu-button {
+    font-size: 1.25rem;
+  }
+}
+

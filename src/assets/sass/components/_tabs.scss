@@ -1,0 +1,32 @@
+@use "sass:color"; // ✅ Import Sass color functions first
+@use '../base/color-palette' as *; // Import color palette for color variables
+@use '../base/variables' as *;
+
+.tabs {
+  margin-bottom: $spacing-unit * 1.5;
+
+  .tab {
+    font-weight: bold;
+    padding: $spacing-unit * 0.75 $spacing-unit * 1.5;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: 10%);
+    }
+
+    &.is-active {
+      border-bottom: 3px solid $secondary-color;
+    }
+  }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .tabs {
+    margin-bottom: $spacing-unit;
+
+    .tab {
+      padding: $spacing-unit * 0.5 $spacing-unit;
+    }
+  }
+}

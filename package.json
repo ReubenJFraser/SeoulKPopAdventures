@@ -4,15 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "sass src/assets/sass/styles_bulma_modal_custom.scss:dist/css/main.css --no-source-map --style compressed",
-    "watch": "sass src/assets/sass/styles_bulma_modal_custom.scss:dist/css/main.css --watch"
+    "build": "sass --style compressed --source-map --load-path=node_modules src/assets/sass/base/main.scss:dist/css/main.css",
+    "watch": "sass --watch --style compressed --source-map --load-path=node_modules src/assets/sass/base/main.scss:dist/css/main.css"
   },
   "devDependencies": {
     "sass": "^1.81.0"
   },
   "dependencies": {
-    "bulma": "^1.0.2"
+    "@material/web": "^2.2.0",
+    "bulma": "^1.0.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
   }
 }
-
-

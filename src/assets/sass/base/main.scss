@@ -1,0 +1,86 @@
+/*
+ This is the compiled CSS file (main.css) used for development and debugging.
+ It is generated automatically during the build process along with its source map (main.css.map).
+ This file is distinct from the main-ph7zUQsI.css (or similarly named file), which is used for production deployment.
+ The production file includes a hash in its name (main-[hash].css) for cache busting purposes.
+*/
+
+// _main.scss: entry point for compiling all styles
+
+/* Import Custom Variables */
+@use "./variables" as variables; // ✅ Ensure variables are available early
+
+@use "sass:color"; // ✅ Ensure color module is available
+
+@use "sass:math"; // ✅ Ensure math module is available
+
+/* Import Bulma core framework styles from node_modules */
+@use "bulma/sass" as bulma;
+
+/* Import Material Web Elevated Button */
+@use "@material/web/button/_elevated-button" as elevated-button;
+
+/* Import Color Palette */
+@use "./color-palette" as color-palette; // ✅ Ensure namespace to access colors correctly
+
+/* Import Mixins */
+@use "../components/mixins/general";
+@use "../components/mixins/buttons";
+@use "../components/mixins/menu" as menuMixins; // Alias added to resolve namespace conflict
+@use "../components/mixins/slider" as sliderMixins;
+
+/* Import Button Styles */
+@use "../components/buttons/bookmark-button";
+@use "../components/buttons/fab";
+@use "../components/buttons/menu-button";
+
+/* Import Layout Styles */
+@use "../layout/navbar";
+@use "../layout/desktop-footer";
+@use "../layout/bottom-app-bar";
+@use "../layout/sidebar";
+
+/* Import Component Styles */
+@use "../components/tabs";
+@use "../components/restaurant-details";
+@use "../components/menu";
+@use "../components/modal";
+@use "../components/slider";
+
+/* Import Restaurant Window Styles */
+@use "../components/restaurant-window";
+
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+/* Global Styles */
+body {
+  font-family: variables.$font-stack; // ✅ Explicitly reference variables.$font-stack
+  color: color-palette.$primary-color; // ✅ Ensure color-palette namespace is used correctly
+}
+
+/* General Button Styles */
+.button {
+  background-color: color-palette.$primary-color; // ✅ Ensure color-palette namespace is used correctly
+  color: color-palette.$secondary-color; // ✅ Ensure color-palette namespace is used correctly
+  padding: math.div(variables.$spacing-unit, 2); // ✅ Use math.div() for compatibility
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: color.scale(color-palette.$primary-color, $lightness: 10%);
+    transform: scale(1.1);
+    color: color-palette.$secondary-color; // ✅ Ensure color-palette namespace is used correctly
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+@use "sass:color";
+@use '../base/color-palette' as *;
+@use "../base/variables" as *;
+
+.navbar {
+  background: linear-gradient(135deg, $beige-light, $primary-color);
+  padding: $spacing-unit;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+
+    .material-symbols-outlined {
+      font-size: 1.5rem;
+      color: white;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    .navbar-burger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.5rem;
+      margin-left: $spacing-unit;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .navbar-menu {
+    display: none;
+    align-items: center;
+    gap: $spacing-unit;
+
+    .navbar-item {
+      display: flex;
+      align-items: center;
+      padding: $spacing-unit * 0.5 $spacing-unit;
+      color: white;
+      font-weight: bold;
+
+      &:hover {
+        color: $secondary-color;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .material-symbols-outlined {
+        margin-right: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &.is-active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: $primary-color;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: $spacing-unit;
+    }
+  }
+
+  .navbar-buttons {
+    display: flex;
+    gap: $spacing-unit;
+
+    .button {
+      padding: $spacing-unit * 0.5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: $secondary-color;
+      }
+
+      &.is-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+

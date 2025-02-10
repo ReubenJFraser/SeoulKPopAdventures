@@ -1,0 +1,27 @@
+// _bookmark-button.scss
+// Refined SCSS file for styling the bookmark button
+
+@use 'sass:math'; // ✅ Import the math module
+@use '../mixins/buttons' as *;
+@use '../../base/variables' as *;
+@use '../../base/color-palette' as *; // ✅ Import color palette
+
+.bookmark-button {
+  @include bookmark-button($bookmark-blue); // ✅ Reference correct variable
+  padding: math.div($spacing-unit, 2) $spacing-unit; // ✅ Fix division
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .bookmark-button {
+    padding: math.div($spacing-unit, 4) math.div($spacing-unit, 2); // ✅ Fix division
+  }
+}
+
+
