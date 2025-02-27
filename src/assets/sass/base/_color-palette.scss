@@ -1,42 +1,65 @@
+// color-palette.scss
+
 @use "sass:color"; // ✅ Import Sass color functions
 
-// Core Colors
-$primary-color: #6b2d72 !default;       // Dark Purple for primary buttons and text
-$secondary-color: #fbaffe !default;     // Light Pink for secondary buttons
-$text-on-primary: #ffffff !default;     // White text for primary buttons
-$text-on-secondary: $primary-color !default; // Dark Purple text for secondary buttons
+/* 
+  Seoul K-Pop Adventures - Pastel Purple (Lavender) Color Scheme
+  -------------------------------------------------------------
+  Emphasizing a fun, modern K-Pop vibe. The "lavender" shade (#f3d7f4)
+  becomes a key surface color for sidebars, bottom bars, and any large
+  background areas you want to style with a pastel vibe.
+*/
 
-// Shades and Tints
-$primary-shade: #5a2460 !default;       // Darker shade of primary color
-$primary-tint: color.adjust($primary-color, $lightness: 20%) !default; // ✅ Updated for Dart Sass
-$secondary-tint: #f3d7f4 !default;      // Lavender-pink as the lighter tint of secondary color
-$secondary-shade: color.adjust($secondary-color, $lightness: -10%) !default; // ✅ Updated for Dart Sass
+/* Core Brand Colors */
+$primary-color: #6b2d72 !default;      // Dark Purple for primary buttons, text
+$secondary-color: #fbaffe !default;    // Light Pink for secondary buttons
+$text-on-primary: #ffffff !default;    // White text for primary surfaces
+$text-on-secondary: $primary-color !default; // Dark Purple text for secondary surfaces
 
-// Supporting Colors
-$lavender: #f3d7f4 !default;            // Lavender tint
-$beige-light: #d0d1cd !default;         // Light Beige
-$light-beige: #f0e6d1 !default;         // Slightly darker beige
-$text-on-lavender: $primary-color !default; // Dark Purple text on lavender
+/* Shades & Tints */
+$primary-shade: #5a2460 !default; // Darker shade of primary color
+$primary-tint: color.adjust($primary-color, $lightness: 20%) !default; 
+// e.g., a lighter variant of primary purple
 
-// ✅ NEW: Sidebar and Menu Mode Colors
-$sidebar-bg: $beige-light !default; // ✅ Define sidebar background color
-$brown: #795548 !default; // ✅ Define brown color for menu mode
+/* 
+  Pastel Lavender 
+  - This is your new star "surface" color for that K-Pop vibe.
+  - It's effectively your $secondary-tint, but let's ensure it's consistent 
+  across the board. 
+*/
+$lavender: #f3d7f4 !default; // Pastel lavender - soft, modern, fun
+$secondary-tint: $lavender !default; // Keep "lavender" as the secondary tint
+$secondary-shade: color.adjust($secondary-color, $lightness: -10%) !default;
 
-// ✅ NEW: Bookmark Button Color
-$bookmark-blue: #4dabf7 !default; // ✅ Define bookmark button color
+/* Supporting / Neutral Colors */
+$beige-light: #d0d1cd !default;      // You can keep this if you still want neutrals somewhere
+$light-beige: #f0e6d1 !default;      // Slightly darker beige
+$text-on-lavender: $primary-color !default; // Dark Purple text for lavender surfaces
 
-// ✅ NEW: Modal Colors
-$modal-bg: #ffffff !default; // ✅ Define background for restaurant modal
-$modal-content-bg: $modal-bg !default; // ✅ Define content background for modal
+/* Sidebar & Menu Mode (Now lavender-based) */
+$sidebar-bg: $lavender !default; 
+// Instead of $beige-light, let's use lavender to unify the brand vibe
+$brown: #795548 !default; // Keep if you still want a brown "menu-mode" option
 
-// Secondary Accent Colors
-$blue-light: #3d9ae3 !default;          // Light blue for interactive states
-$red-light: #ff4131 !default;           // Light red for error messages
-$yellow: #ffce00 !default;              // Yellow for warnings
-$green-light: #40a459 !default;         // Light green for success messages
+/* Bookmark & Misc */
+$bookmark-blue: #4dabf7 !default; 
+$modal-bg: #ffffff !default;         // White for modals if you still prefer a crisp, clean background
+$modal-content-bg: $modal-bg !default;
 
-// Neutral and Background Colors
-$off-black: #121149 !default;           // Deep black for text on dark backgrounds
-$modal-background: $beige-light !default; // Modal background
+/* Secondary Accent Colors */
+$blue-light: #3d9ae3 !default;       
+$red-light: #ff4131 !default;        
+$yellow: #ffce00 !default;           
+$green-light: #40a459 !default;      
 
+/* Neutral & Background Colors */
+$off-black: #121149 !default;        
+$modal-background: $lavender !default; 
+// If you want modals also tinted lavender, or keep white—your call
 
+/* 
+  Explanation:
+  - $lavender (#f3d7f4) is used as your main pastel surface color (sidebar, bottom app bar).
+  - $primary-color (#6b2d72) remains for major brand actions (buttons, text on lavender).
+  - $secondary-color (#fbaffe) is still your pink. $secondary-tint is set to $lavender for consistency.
+*/

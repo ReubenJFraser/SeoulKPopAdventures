@@ -1,8 +1,10 @@
-@use "sass:color"; // ✅ Ensure color functions are available globally
+// C:\laragon\www\bulma-test\src\assets\sass\base\_variables.scss
+
+@use "sass:color";
 @use "color-palette" as *;
 
 // Typography
-$font-stack: '"Nunito", sans-serif' !default;
+$font-stack: "Nunito, sans-serif" !default;
 
 // Bottom App Bar Variables
 $bottom-app-bar-bg: $beige-light !default;     // Light Beige background
@@ -24,40 +26,52 @@ $fab-bg-filter: color.adjust($fab-bg, $lightness: 15%) !default;
 // Buttons
 $button-elevation: 4px !default; // Default elevation for FAB buttons
 
+// ✅ Outlined Button Background
+//  - If you want about 10% opacity, adjust as desired (0.05 → 5%, 0.10 → 10%, etc.)
+$outlined-button-bg: rgba($beige-light, 0.10) !default;
+
+// For Filled Button
+$filled-button-bg: $primary-color !default;       // #6b2d72
+$filled-button-text: $text-on-primary !default;   // #ffffff
+
+// For Filled Tonal Button
+$filled-tonal-button-bg: $secondary-tint !default;       // #f3d7f4
+$filled-tonal-button-text: $primary-color !default;       // #6b2d72
+
 // Bottom App Bar
 $bottom-app-bar-bg: $light-beige !default;      // Light Beige for bottom app bar
 $bottom-app-bar-fg: $primary-color !default;    // Dark Purple text for bottom app bar
 $bottom-app-bar-hover-bg: $secondary-tint !default; // Lavender tint for hover state
 
 // Slider Variables
-$slider-thumb-color: $primary-color !default;                              // Dark Purple thumb
-$slider-thumb-border: color.adjust($primary-color, $lightness: -15%) !default; // Adjusted for Dart Sass
-$slider-track-active-color: color.adjust($primary-color, $lightness: 20%) !default; // Adjusted for Dart Sass
-$slider-track-inactive-color: $lavender !default;                          // Lavender for inactive track
-$slider-hover-color: color.adjust($primary-color, $lightness: -10%) !default; // Adjusted for Dart Sass
-$slider-focus-color: rgba($primary-color, 0.3) !default;                   // Transparent purple for focus outline
-$slider-disabled-thumb-color: $beige-light !default;                       // Light beige for disabled thumb
-$slider-disabled-track-color: $light-beige !default;                       // Very light beige for disabled track
+$slider-thumb-color: $primary-color !default;
+$slider-thumb-border: color.adjust($primary-color, $lightness: -15%) !default;
+$slider-track-active-color: color.adjust($primary-color, $lightness: 20%) !default;
+$slider-track-inactive-color: $lavender !default;
+$slider-hover-color: color.adjust($primary-color, $lightness: -10%) !default;
+$slider-focus-color: rgba($primary-color, 0.3) !default;
+$slider-disabled-thumb-color: $beige-light !default;
+$slider-disabled-track-color: $light-beige !default;
 
 // Slider Dimensions
-$slider-thumb-size: 20px !default;  // Diameter of slider thumb
-$slider-track-height: 4px !default; // Height of slider track
+$slider-thumb-size: 20px !default;
+$slider-track-height: 4px !default;
 
 // Icon Dimensions
-$icon-size: 24px !default;                // Default icon size
-$icon-target-size: 48px !default;         // Default touch target size
-$icon-size-desktop: 20px !default;        // Condensed icon size for desktop
-$icon-target-size-desktop: 40px !default; // Condensed target size for desktop
+$icon-size: 24px !default;
+$icon-target-size: 48px !default;
+$icon-size-desktop: 20px !default;
+$icon-target-size-desktop: 40px !default;
 
 // Spacing
 $spacing-unit: 8px !default;
 
 // Footer Variables (✅ NEW: Fix missing variable)
-$wordpress-footer-bg-general: $beige-light !default; // Define general footer background color
-$wordpress-footer-fg: $primary-color !default; // ✅ Define footer text color
+$wordpress-footer-bg-general: $beige-light !default;
+$wordpress-footer-fg: $primary-color !default;
 
 // Miscellaneous
-$link-color: $blue-light !default;                                // Light blue for links
-$modal-close-button-color: $beige-light !default;                 // Subtle close button color
+$link-color: $blue-light !default;
+$modal-close-button-color: $beige-light !default;
 
 @debug "Font stack: #{$font-stack}";

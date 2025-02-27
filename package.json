@@ -4,8 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "sass --style compressed --source-map --load-path=node_modules src/assets/sass/base/main.scss:dist/css/main.css",
-    "watch": "sass --watch --style compressed --source-map --load-path=node_modules src/assets/sass/base/main.scss:dist/css/main.css"
+    "build:base": "sass --style compressed --source-map --load-path=node_modules src/assets/sass/base/base.scss:dist/css/base.css",
+    "build:material": "sass --style compressed --source-map --load-path=node_modules src/assets/sass/components/material-web.scss:dist/css/material-web.css",
+
+    "build:main": "sass --style compressed --source-map --load-path=node_modules src/assets/sass/main.scss:dist/css/main.css",
+
+    "build": "npm run build:base && npm run build:material && npm run build:main",
+
+    "watch:base": "sass --watch --style compressed --source-map --load-path=node_modules src/assets/sass/base/base.scss:dist/css/base.css",
+    "watch:material": "sass --watch --style compressed --source-map --load-path=node_modules src/assets/sass/components/material-web.scss:dist/css/material-web.css",
+    "watch:main": "sass --watch --style compressed --source-map --load-path=node_modules src/assets/sass/main.scss:dist/css/main.css",
+    "watch": "npm run watch:base & npm run watch:material & npm run watch:main",
+
+    "start": "node server.js"
   },
   "devDependencies": {
     "sass": "^1.81.0"
@@ -16,5 +27,12 @@
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mysql2": "^3.12.0"
-  }
+  },
+
+  "main": "db.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
+

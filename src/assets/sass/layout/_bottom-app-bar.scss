@@ -1,18 +1,32 @@
-/* Updated _bottom-app-bar.scss */
-@use "sass:color"; // ✅ Import Sass color functions first
-@use '../base/color-palette' as *;
-@use '../base/variables' as *;
-@use '../components/buttons/fab' as *;
-@use '../components/buttons/menu-button' as *;
-@use '../components/slider' as *;
-@use '../components/mixins/slider' as slider; // ✅ Ensure correct import
-@use '../components/mixins/buttons' as *;
+/* _bottom-app-bar.scss */
+@use "sass:color"; // Import Sass color functions
+@use '../base/color-palette' as palette;
+@use '../base/variables' as vars;
+
+/* 
+   Import your button / slider mixins. 
+   If your `fab` mixin is in `buttons/fab.scss`, 
+   make sure that's actually a partial with @mixin. 
+*/
+@use '../components/mixins/fab' as fabMixins;
+@use '../components/buttons/menu-button' as menuButtonMixins;
+@use '../components/slider' as sliderComponents;
+@use '../components/mixins/slider' as slider;
+@use '../components/mixins/buttons' as buttonMixins;
 @use '../components/mixins/menu' as menuMixins;
 
+/*
+  Embrace Pastel Lavender:
+  - We use palette.$lavender at ~90% opacity
+  - For text/icons, we can rely on palette.$primary-color (#6b2d72) for contrast
+*/
 .bottom-app-bar {
-  background-color: $bottom-app-bar-bg-filter; // ✅ Apply semi-transparent background
-  color: $bottom-app-bar-fg;
-  height: $bottom-app-bar-height;
+  /* Pastel Lavender background, mostly opaque */
+  background-color: rgba(palette.$lavender, 0.9);
+  /* Dark purple text (or icons) for contrast */
+  color: palette.$primary-color;
+
+  height: vars.$bottom-app-bar-height;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,18 +34,26 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  /* Subtle "lift" above the map */
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
+  /* Floating Action Button inside the bottom app bar */
   .fab {
-    @include fab($fab-size, $fab-bg, $fab-fg);
+    /* 
+       IMPORTANT: Reference your variables from _variables.scss via vars. 
+       Also reference the fab mixin from fabMixins if that file has @mixin fab(...)
+    */
+    @include fabMixins.fab(vars.$fab-size, vars.$fab-bg, vars.$fab-fg);
+
     position: absolute;
     bottom: 12px;
     right: 16px;
     transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
+  /* Zoom Slider (centered) */
   .zoom-slider {
     display: flex;
     flex-direction: column;
@@ -43,15 +65,15 @@
 
     #sliderLabel {
       margin-top: 0.5rem;
-      color: $text-on-primary;
-      background: $primary-color;
+      color: palette.$text-on-primary;
+      background: palette.$primary-color;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 0.75rem;
     }
   }
 
-  // Read More Button (Left Side)
+  /* Read More Button (left side) */
   .read-more-button {
     position: absolute;
     left: 16px;
@@ -68,25 +90,30 @@
     img {
       width: 32px;
       height: 32px;
+      /* 
+         If your icon is a neutral color, it should still show fine on lavender.
+         If you want to recolor, consider using <svg> with fill etc.
+      */
     }
   }
 
-  // FAB Interactions: Expanding into the Sidebar
+  /* FAB Interactions: expanding into the sidebar */
   &.sidebar-open {
     .fab {
       transform: translateX(-200px) scale(0.85);
-      background-color: color.adjust($fab-bg, $lightness: -10%); // ✅ Fix for Dart Sass
+      background-color: color.adjust(vars.$fab-bg, $lightness: -10%);
     }
   }
 
-  // Sidebar Styles
+  /* Sidebar Styles */
   .sidebar {
     position: fixed;
     top: 0;
     right: -260px; // Hidden initially
     width: 250px;
     height: 100%;
-    background-color: $sidebar-bg;
+    /* If you have a $sidebar-bg in color-palette or variables: */
+    background-color: palette.$sidebar-bg;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     transition: right 0.3s ease-in-out;
     display: flex;
@@ -97,39 +124,6 @@
 
   .sidebar.open {
     right: 0;
-  }
-
-  // Mode-Specific Styles
-  &.map-mode {
-    background-color: color.adjust($primary-color, $lightness: 20%); // ✅ Fix for Dart Sass
-
-    .app-bar-button {
-      color: $primary-color;
-    }
-  }
-
-  &.explore-mode {
-    background-color: $secondary-color;
-
-    .app-bar-button {
-      color: $text-on-secondary;
-
-      &:hover {
-        color: color.adjust($text-on-secondary, $lightness: 10%);
-      }
-    }
-  }
-
-  &.menu-mode {
-    background-color: $brown;
-
-    .app-bar-button {
-      color: $beige-light;
-
-      &:hover {
-        color: color.adjust($beige-light, $lightness: 10%);
-      }
-    }
   }
 }
 
@@ -153,5 +147,3 @@
     right: -100%; // Fully hides sidebar on mobile until triggered
   }
 }
-
-

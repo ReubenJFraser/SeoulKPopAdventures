@@ -26,10 +26,17 @@
     /* TypeScript Extensions */
     "types": ["lit"], // Include type definitions for Lit
     "paths": {
-      "@material/web/*": ["./*"] // Optional: Adjust this if you need specific paths for Material Web
+      "@material/web/*": ["./*"] // Optional: Adjust if you need specific paths for Material Web
     }
   },
-  "include": ["src/**/*"], // Include all files in the src directory
-  "exclude": ["node_modules", "dist"] // Exclude unnecessary directories
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "other"
+  ]
 }
+
 

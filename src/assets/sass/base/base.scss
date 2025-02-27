@@ -1,0 +1,30 @@
+// base.scss
+// Minimal foundation: variables, color palette, optional resets & typography
+
+@use "sass:color";
+@use "sass:math";
+
+// 1) Forward your variables so other files (like main.scss) can access them under `base.$variable`
+@forward "./variables";
+@forward "./color-palette";
+
+// 2) If you want to reference `$font-stack` or `$primary-color` within base.scss itself,
+//    also `@use "./variables" as *;` or `@use "./color-palette" as *;`
+@use "./variables" as *; // Now `$font-stack` is accessible locally in this file
+
+// 3) (Optional) If you have a reset partial:
+@use "./_reset";
+
+// 4) (Optional) If you have a typography partial:
+@use "./_typography";
+
+// 5) Global styles you consider truly "base"
+body {
+  // Because we `@use "./variables" as *;` above, we can reference `$font-stack` here
+  font-family: $font-stack;
+}
+
+
+
+
+

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/seoul-kpop-adventures/images/Vividz_Foto-AdobeStock_541624410.svg" />
+    <link rel="icon" type="image/x-icon" href="/seoul-kpop-adventures/images/icons/adobe_stock/Vividz_Foto-AdobeStock_541624410-Color_Scheme_Edit.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
 
@@ -19,8 +19,10 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar (commented out for mobile map mode) -->
+    <!--
     <%- include('./navbar') %>
+    -->
 
     <div id="app">
         <div id="map" style="width: 100%; height: 500px;"></div>
@@ -44,12 +46,14 @@
 
     <!-- JavaScript Files -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
-    <script type="module" src="/seoul-kpop-adventures/js/navbar.js" defer></script>
+    <!-- <script type="module" src="/seoul-kpop-adventures/js/navbar.js" defer></script> -->
+
     <script type="module" src="/seoul-kpop-adventures/js/map.js" defer></script>
-    <script type="module" src="/seoul-kpop-adventures/js/modal-navigation.js" defer></script>
+    <script type="module" src="/seoul-kpop-adventures/js/marker-modal.js" defer></script>
     <script type="module" src="/seoul-kpop-adventures/js/bottom-app-bar.js" defer></script>
     <script type="module" src="/seoul-kpop-adventures/js/restaurant-window.js" defer></script>
 </body>
 </html>
+
 
 

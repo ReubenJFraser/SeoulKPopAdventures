@@ -1,0 +1,54 @@
+// _elevated-button.scss
+// Applies the generic mixin from mixins/_elevated-button.scss
+// Also adds project-specific rules for your "Expanded Modal" usage.
+
+@use "sass:color";
+@use '../../base/variables' as vars;        // Still here in case you need anything from _variables.scss
+@use '../../base/color-palette' as palette; // Where $beige-light actually comes from
+@use '../mixins/elevated-button' as e;
+
+// You might keep a straightforward .elevated-button class:
+.elevated-button {
+  // Example: tie this to your brand colors or a variation
+  @include e.elevated-button-styles(
+    $container-color: #f7f2fa,  // or palette.$light-beige, etc.
+    $text-color: palette.$primary-color,
+    $hover-color: palette.$secondary-tint,
+    $pressed-color: palette.$secondary-shade,
+    // Switch to palette.$beige-light here ↓
+    $disabled-container-color: palette.$beige-light,
+    $disabled-text-color: palette.$text-on-lavender
+    // ...and so on, or let them default if you prefer
+  );
+
+  // Any additional site-specific overrides for .elevated-button
+  // Example: add margin, custom transitions, etc.
+  margin: 8px;
+}
+
+// If you want a special variation for the expanded modal usage, define it:
+.modal-action-button {
+  @include e.elevated-button-styles(
+    $container-color: vars.$bottom-app-bar-bg, 
+    $text-color: vars.$bottom-app-bar-fg
+    // Or any custom color combos suitable for your modal
+  );
+
+  margin: 0 8px; // Spacing within the .expanded-actions container
+  // Possibly more specialized rules:
+  // e.g., width: 100%; or flex: 1; if you want them to stretch
+}
+
+// You can also style the container in your .expanded-actions or .modal-footer class
+.expanded-actions {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  justify-content: space-around;
+
+  // Typically you'd nest .modal-action-button or .elevated-button here
+  .modal-action-button {
+    flex: 1 1 auto;
+  }
+}
+

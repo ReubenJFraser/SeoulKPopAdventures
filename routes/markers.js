@@ -1,5 +1,5 @@
 import express from 'express';
-import db from '../db.js'; // Ensure db.js also uses ES module syntax
+import db from '../db.js'; // Ensure db.js uses ES module syntax
 
 const router = express.Router();
 
@@ -11,81 +11,77 @@ router.use((req, res, next) => {
     next();
 });
 
-// 🔹 GET: Fetch ALL restaurant data
+// 🔹 Helper Function to Fetch Restaurant Data
+async function fetchRestaurantData(restaurantID = null) {
+    let sql = `
+        SELECT 
+            RestaurantID, 
+            RestaurantName_English, 
+            RestaurantName_Korean,
+            Address,
+            District,
+            Neighborhood,
+            Longitude,
+            Latitude, 
+            CuisineCategory, 
+            CuisineSubcategory,
+            Description,   
+            SignatureDishes,
+            RestaurantFeatures,
+            DiningStyle,
+            TripAdvisorLink,
+            MichelinGuideLink,
+            TripAdvisorRating,
+            MichelinGuideRating,
+            TasteOfSeoulYrsInc,
+            Awards,
+            VegetarianFriendly,
+            VeganOptions,
+            HalalOptions,
+            GlutenFreeOptions,
+            GoodFor,
+            Hours,
+            SpecialHours,
+            OpenNow,
+            Telephone,
+            OnlineBooking,
+            TripAdvisor_PriceCategory,
+            PriceCategory,
+            PriceRangeIcon,
+            PriceRangeTooltip,
+            ImageURL,
+            Icons,
+            AdditionalInfo,
+            TripAdvisorReviews,      -- ✅ Newly Added
+            MichelinGuideReviews,    -- ✅ Newly Added
+            GoogleMapsReviews,       -- ✅ Newly Added
+            AIReviewSummary,         -- ✅ Newly Added
+            is_liked,
+            liked_at,
+            is_bookmarked,
+            bookmarked_at,
+            is_blocked,
+            blocked_at,
+            is_reported,
+            reported_at
+        FROM restaurants`;
+
+    const params = [];
+    
+    if (restaurantID) {
+        sql += " WHERE RestaurantID = ?";
+        params.push(restaurantID);
+    }
+
+    const [results] = await db.query(sql, params);
+    return results;
+}
+
+// 🔹 GET: Fetch ALL restaurants (or a specific one if `id` is provided)
 router.get('/restaurants', async (req, res) => {
     try {
-        let sql = `
-            SELECT 
-                RestaurantID, 
-                RestaurantName_English, 
-                RestaurantName_Korean,
-                Address,
-                District,
-                Neighborhood,
-                Longitude,
-                Latitude, 
-                CuisineCategory, 
-                CuisineSubcategory,
-                Description,   
-                SignatureDishes,
-                RestaurantFeatures,
-                DiningStyle,
-                TripAdvisorLink,
-                MichelinGuideLink,
-                TripAdvisorRating,
-                MichelinGuideRating,
-                TasteOfSeoulYrsInc,
-                Awards,
-                VegetarianFriendly,
-                VeganOptions,
-                HalalOptions,
-                GlutenFreeOptions,
-                GoodFor,
-                Hours,
-                SpecialHours,
-                OpenNow,
-                Telephone,
-                OnlineBooking,
-                TripAdvisor_PriceCategory,
-                PriceCategory,
-                PriceRangeIcon,
-                PriceRangeTooltip,
-                ImageURL,
-                Icons,
-                AdditionalInfo,
-                TripAdvisorReviews,      -- ✅ Newly Added
-                MichelinGuideReviews,    -- ✅ Newly Added
-                GoogleMapsReviews,       -- ✅ Newly Added
-                AIReviewSummary,         -- ✅ Newly Added
-                is_liked,
-                liked_at,
-                is_bookmarked,
-                bookmarked_at,
-                is_blocked,
-                blocked_at,
-                is_reported,
-                reported_at
-            FROM restaurants
-        `;
-
-        // Apply filters (id or markerType)
-        const conditions = [];
-        const params = [];
-
-        if (req.query.id) {
-            conditions.push("RestaurantID = ?");
-            params.push(parseInt(req.query.id));
-        }
-        if (req.query.markerType) {
-            conditions.push("MarkerType = ?");
-            params.push(req.query.markerType);
-        }
-
-        if (conditions.length) {
-            sql += " WHERE " + conditions.join(" AND ");
-        }
-
-        const [results] = await db.query(sql, params);
+        const restaurantID = req.query.id ? parseInt(req.query.id) : null;
+        const results = await fetchRestaurantData(restaurantID);
 
         if (results.length > 0) {
             res.json(results);
@@ -98,88 +94,28 @@ router.get('/restaurants', async (req, res) => {
     }
 });
 
-// 🔹 GET: Fetch SPECIFIC restaurant by ID (Merged from restaurant.js)
-router.get('/restaurants/:id', async (req, res) => {
+// 🔹 GET: Render Modal with Specific Restaurant Data
+router.get('/modal/:id', async (req, res) => {
     try {
         const restaurantID = parseInt(req.params.id);
         if (isNaN(restaurantID)) {
             return res.status(400).json({ error: 'Invalid Restaurant ID' });
         }
 
-        // Fetch restaurant details from the database
-        const sql = `
-            SELECT 
-                RestaurantID, 
-                RestaurantName_English, 
-                RestaurantName_Korean,
-                Address,
-                District,
-                Neighborhood,
-                Longitude,
-                Latitude, 
-                CuisineCategory, 
-                CuisineSubcategory,
-                Description,   
-                SignatureDishes,
-                RestaurantFeatures,
-                DiningStyle,
-                TripAdvisorLink,
-                MichelinGuideLink,
-                TripAdvisorRating,
-                MichelinGuideRating,
-                TasteOfSeoulYrsInc,
-                Awards,
-                VegetarianFriendly,
-                VeganOptions,
-                HalalOptions,
-                GlutenFreeOptions,
-                GoodFor,
-                Hours,
-                SpecialHours,
-                OpenNow,
-                Telephone,
-                OnlineBooking,
-                TripAdvisor_PriceCategory,
-                PriceCategory,
-                PriceRangeIcon,
-                PriceRangeTooltip,
-                ImageURL,
-                Icons,
-                AdditionalInfo,
-                TripAdvisorReviews,      -- ✅ Newly Added
-                MichelinGuideReviews,    -- ✅ Newly Added
-                GoogleMapsReviews,       -- ✅ Newly Added
-                AIReviewSummary,         -- ✅ Newly Added
-                is_liked,
-                liked_at,
-                is_bookmarked,
-                bookmarked_at,
-                is_blocked,
-                blocked_at,
-                is_reported,
-                reported_at
-            FROM restaurants 
-            WHERE RestaurantID = ?`;
-
-        const [results] = await db.query(sql, [restaurantID]);
+        const results = await fetchRestaurantData(restaurantID);
 
         if (results.length > 0) {
-            // Convert database fields to correct types (e.g., float for coordinates)
-            const restaurant = results[0];
-            restaurant.Latitude = parseFloat(restaurant.Latitude);
-            restaurant.Longitude = parseFloat(restaurant.Longitude);
-            
-            res.json(restaurant);
+            res.render('modal', { restaurant: results[0] }); // ✅ Render `modal.ejs` with one restaurant
         } else {
             res.status(404).json({ error: 'Restaurant not found' });
         }
     } catch (err) {
-        console.error('Error fetching restaurant details:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error("❌ Error fetching restaurant details:", err);
+        res.status(500).send("Internal Server Error");
     }
 });
 
-// 🔹 POST: Update restaurant actions (like, bookmark, report)
+// 🔹 POST: Update Restaurant Actions (like, bookmark, report)
 router.post('/restaurants/action', async (req, res) => {
     try {
         const { RestaurantID, action } = req.body;
@@ -233,5 +169,6 @@ router.post('/restaurants/action', async (req, res) => {
 
 // Export router as an ES module
 export default router;
+
 
 

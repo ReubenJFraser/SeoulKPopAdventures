@@ -1,0 +1,45 @@
+// _text-button.scss
+// Minimal, no background or outline, typically used for less prominent actions
+
+@use '../../base/variables' as vars;
+@use '../../base/color-palette' as palette;
+@use 'sass:color';
+
+@mixin text-button-styles(
+  $text-color: palette.$primary-color,
+  $hover-color: color.scale($text-color, $lightness: 10%),
+  $pressed-color: color.scale($text-color, $lightness: -10%),
+  // Changed vars.$beige-light to palette.$beige-light ↓
+  $disabled-color: palette.$beige-light,
+  $font-size: 0.875rem,
+  $font-family: vars.$font-stack,
+  $font-weight: 500,
+  $padding: 8px 12px,
+  $transition-time: 0.2s
+) {
+  background-color: transparent;
+  color: $text-color;
+  border: none;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  padding: $padding;
+  cursor: pointer;
+  transition: color $transition-time ease-in-out;
+
+  &:hover {
+    color: $hover-color;
+    text-decoration: underline; // optional for emphasis
+  }
+
+  &:active {
+    color: $pressed-color;
+  }
+
+  &:disabled {
+    color: $disabled-color;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+

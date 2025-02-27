@@ -1,0 +1,12 @@
+// _text-button.scss
+@use '../../base/variables' as vars;
+@use '../../base/color-palette' as palette;
+@use '../mixins/text-button' as tb;
+
+.text-button {
+  @include tb.text-button-styles(
+    $text-color: palette.$primary-color
+  );
+
+  margin: 8px;
+}

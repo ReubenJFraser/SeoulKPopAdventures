@@ -1,0 +1,51 @@
+// _filled-tonal-button.scss
+// Similar to the filled-button mixin, but uses "tonal" background
+
+@use '../../base/variables' as vars;
+@use '../../base/color-palette' as palette;
+@use 'sass:color';
+
+@mixin filled-tonal-button-styles(
+  $background: palette.$secondary-tint, // or a "tonal" version of primary
+  $text-color: palette.$primary-color,  // typically a darker color for contrast
+  $hover-bg: color.scale($background, $lightness: 10%),
+  $pressed-bg: color.scale($background, $lightness: -10%),
+  // Changed vars.$beige-light to palette.$beige-light:
+  $disabled-bg: palette.$beige-light,
+  $disabled-text: palette.$primary-color,
+  $border-radius: 8px,
+  $padding: 10px 16px,
+  $font-size: 0.875rem,
+  $font-family: vars.$font-stack,
+  $font-weight: 500,
+  $transition-time: 0.2s,
+  $box-shadow: none
+) {
+  background-color: $background;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius;
+  padding: $padding;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  transition: background-color $transition-time ease-in-out;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+
+  &:active {
+    background-color: $pressed-bg;
+  }
+
+  &:disabled {
+    background-color: $disabled-bg;
+    color: $disabled-text;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+

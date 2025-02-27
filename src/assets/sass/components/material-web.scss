@@ -1,0 +1,53 @@
+// material-web.scss
+// 
+// Dedicated entry point for all Google Material–inspired styles & buttons.
+// Compiles to dist/css/material-web.css via your package.json build script.
+//
+//  1. Imports Sass modules needed for color/math
+//  2. Optionally imports your base.scss if these styles rely on those variables
+//  3. Imports official @material/web partials (e.g., for Elevated Buttons)
+//  4. Imports your local SCSS partials for each button type (text, filled, etc.)
+
+@use "sass:color";
+@use "sass:math";
+
+// If your button partials need your base variables or color palette,
+// import them here. This assumes you'll have a base.scss in ../base/:
+@use "../base/base" as base;
+
+// Import any official Material Web partials you want to use
+// (e.g. the Elevated Button from @material/web library)
+@use "@material/web/button/_elevated-button" as mdElevated;
+
+// Now import each of your local “Material Web” style partials:
+@use "./buttons/_fab";
+@use "./buttons/_text-button";
+@use "./buttons/_filled-button";
+@use "./buttons/_filled-tonal-button";
+@use "./buttons/_outlined-button";
+@use "./buttons/_elevated-button"; 
+@use "./buttons/_read-more-button";
+@use "./buttons/_bookmark-button";
+@use "./buttons/_rating-button";
+@use "./buttons/_menu-button";
+
+/*
+  If you had a single "_buttons-all.scss" partial that aggregated all these,
+  you could just do:
+  
+    @use "../buttons/_buttons-all";
+  
+  But referencing them individually is more modular and explicit.
+*/
+
+/*
+  NOTES:
+  - If these partials rely on your base variables, they'll need lines like:
+       @use '../../base/variables' as vars;
+    inside them. That’s fine—importing base.scss here ensures the base
+    build is also loaded at compile time for variable definitions.
+  - The official @material/web partial (mdElevated) might or might not
+    be used directly, depending on how your local partials are structured.
+  - After compiling, you'll get "material-web.css". Only pages that import
+    that file will get the Material button styles.
+*/

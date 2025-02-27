@@ -7,11 +7,14 @@ export default defineConfig({
     sourcemap: true,
     cssCodeSplit: false,
     rollupOptions: {
-      input: 'src/assets/sass/base/main.scss',
-      output: {
-        assetFileNames: 'main-[hash][extname]',
+      input: {
+        main: 'src/assets/sass/base/main.scss',
+        'buttons-all': 'src/assets/sass/components/buttons/_buttons-all.scss'
       },
-    },
+      output: {
+        assetFileNames: '[name]-[hash][extname]'
+      }
+    }
   },
   plugins: [
     {
@@ -26,6 +29,7 @@ export default defineConfig({
     },
   ],
 });
+
 
 
   

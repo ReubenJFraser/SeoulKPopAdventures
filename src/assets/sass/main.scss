@@ -1,0 +1,64 @@
+// main.scss
+// Your site's primary stylesheet (no Google Material Web here).
+// 1) Imports the base foundation (vars, color palette, reset, etc.)
+// 2) Imports Bulma
+// 3) Imports site-specific partials (layout, modals, etc.)
+// 4) Adds Google Fonts & site-wide styles
+
+@use "./base/base" as base;  // Our new foundation for variables/palette
+@use "sass:color";            // If you still need Sass color functions in this file
+@use "sass:math";             // If you still need math here
+@use "bulma/sass" as bulma;   // Bulma UI framework
+
+/* 
+  Removed:
+    - @use "./variables" as variables
+    - @use "./color-palette" as color-palette
+    - @use "@material/web/button/_elevated-button" as elevated-button
+    - Imports of Material button styles 
+      (bookmark-button, fab, menu-button, rating-button, read-more-button)
+  because these are now in material-web.scss or base.scss.
+*/
+
+/* Import any mixins or partials that are truly site-related. */
+@use "./components/mixins/general";
+@use "./components/mixins/buttons";
+@use "./components/mixins/menu" as menuMixins;
+@use "./components/mixins/slider" as sliderMixins;
+
+/* Layout Styles */
+@use "./layout/navbar";
+@use "./layout/desktop-footer";
+@use "./layout/bottom-app-bar";
+@use "./layout/sidebar";
+
+/* Component Styles (non-Material) */
+@use "./components/tabs";
+@use "./components/restaurant-details";
+@use "./components/menu";
+@use "./components/modal";
+@use "./components/slider";
+@use "./components/restaurant-window";
+
+/* Import Google Font (Nunito) for the site */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+/* Global Site-Level Styles */
+body {
+  // Remove .vars. and .palette. references. Now that base.scss @forwards variables,
+  // they are accessible directly as base.$variableName
+  font-family: base.$font-stack;
+  color: base.$primary-color;
+}
+
+/* The .button class has been removed, since you're relying on 
+   Material Web buttons (in material-web.scss) or WordPress theming 
+   for your other sites. */
+
+
+
+
+
+
+
+
