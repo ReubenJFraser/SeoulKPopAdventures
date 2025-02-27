@@ -1,4 +1,8 @@
-<!-- modal.php: Dynamic Modal Component -->
+<!-- modal.ejs: Dynamic Modal Component -->
+
+<!-- Import Custom Button Component -->
+<script src="/images/google_material/custom_components/buttons/elevated-button.js" defer></script>
+
 <div id="bulmaMapModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -10,26 +14,35 @@
 
         <!-- Modal Body -->
         <section class="modal-card-body">
-            <?php
-            // Check if markerType is provided
-            if (isset($_POST['markerType'])) {
-                $markerType = $_POST['markerType'];
-
-                // Dynamically include category-specific content
-                switch ($markerType) {
-                    case 'restaurant':
-                        include 'restaurant-window.php';
-                        break;
-                    case 'touristSite':
-                        include 'tourist-site-window.php'; // Placeholder for future categories
-                        break;
-                    default:
-                        echo '<p>Error: Unknown marker type.</p>';
-                }
-            } else {
-                echo '<p>Error: Marker type not provided.</p>';
-            }
-            ?>
+            <div id="modal-content">
+                <p id="modal-description">Loading...</p>
+                
+                <!-- Ratings Section -->
+                <div id="tripadvisor-container"></div>
+                <div id="michelin-container"></div>
+                
+                <!-- Additional Information -->
+                <div id="restaurant-cuisine"></div>
+                <div id="restaurant-hours"></div>
+                <div id="restaurant-awards"></div>
+            </div>
         </section>
+
+        <!-- Bottom App Bar -->
+        <footer class="modal-card-foot">
+            <div class="bottom-app-bar">
+                <!-- Read More Button -->
+                <elevated-button class="read-more-button" onclick="expandRestaurantModal()">
+                    Read More
+                </elevated-button>
+
+                <!-- Zoom Slider (Center) -->
+                <input type="range" class="zoom-slider" min="1" max="10" step="1">
+
+                <!-- Floating Action Button (FAB) for Sidebar -->
+                <button class="fab-button" onclick="toggleSidebar()">☰</button>
+            </div>
+        </footer>
     </div>
 </div>
+

@@ -1,19 +1,19 @@
-// map.js: Handles map-specific logic
-import { openBulmaModal } from './modal-navigation.js';
+// map.js
+import { openBulmaModal } from './marker-modal.js';
 import { updateHistory } from './centralized_state.js';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicmV1YmVuZnJhc2VyIiwiYSI6ImNseXhzaDFtMTIxNGwyanB5ZnMxM3NrZXUifQ.DbnJosot3YViMDioceWHYg';
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v12',
-  center: [126.9780, 37.5665], // Coordinates for the center of Seoul
+  center: [126.9780, 37.5665], // Seoul center
   zoom: 12,
   pitch: 45,
   bearing: 0,
 });
 
 map.on('load', () => {
-  // Adding 3D buildings layer
+  // Add 3D buildings
   map.addLayer({
     id: '3d-buildings',
     source: 'composite',
@@ -45,8 +45,8 @@ map.on('load', () => {
     },
   });
 
-  // Fetching and adding markers to the map
-  fetch('/public/api.php') // Corrected fetch path for api.php
+  // ✔ Fetch marker data from Node/EJS route
+  fetch('/seoul-kpop-adventures/api/restaurants')
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -59,7 +59,6 @@ map.on('load', () => {
       locations.forEach((location) => {
         const latitude = parseFloat(location.Latitude);
         const longitude = parseFloat(location.Longitude);
-
         if (isNaN(latitude) || isNaN(longitude)) {
           console.error(`Invalid coordinates for location: (${latitude}, ${longitude})`);
           return;
@@ -67,29 +66,25 @@ map.on('load', () => {
 
         const coordinates = [longitude, latitude];
 
-        // Create a marker and add it to the map
+        // Create and add the marker
         const marker = new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
 
-        // Adding click listener to the marker for Bulma modal creation and zoom functionality
+        // Click -> open Bulma modal
         marker.getElement().addEventListener('click', () => {
-          console.log(`Marker at coordinates ${coordinates} clicked.`);
-
-          // Zoom into the marker's location and center the map
           map.flyTo({
-            center: coordinates, // Coordinates of the clicked marker
-            zoom: 15, // Zoom level
-            speed: 1.5, // Smooth transition speed
-            curve: 1, // Smooth curve when flying to the marker
+            center: coordinates,
+            zoom: 15,
+            speed: 1.5,
+            curve: 1,
           });
-
-          // Call the function to open the modal with the location details
           openBulmaModal(location);
-          updateHistory(location); // Update the centralized history state
+          updateHistory(location); // if you track marker visits
         });
       });
     })
     .catch((error) => console.error('Error fetching location data:', error));
 });
+
 
 
 

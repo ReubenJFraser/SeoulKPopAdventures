@@ -1,0 +1,55 @@
+// _outlined-button.scss
+// Applies the outlined-button-styles mixin; can add project-specific rules.
+
+@use "sass:color";
+@use '../../base/variables' as vars;
+@use '../../base/color-palette' as palette;
+@use '../mixins/outlined-button' as o;
+
+.outlined-button {
+  // Standard usage of the outlined mixin
+  @include o.outlined-button-styles(
+    $border-color: palette.$primary-color,
+    $text-color: palette.$primary-color,
+    $hover-color: color.scale(palette.$primary-color, $lightness: 10%),
+    $pressed-color: color.scale(palette.$primary-color, $lightness: -10%),
+
+    // Disabled states
+    $disabled-border-color: palette.$beige-light,
+    $disabled-text-color: palette.$text-on-lavender
+  );
+
+  margin: 8px;
+}
+
+// A special variant for your modal usage
+.modal-outlined-button {
+  @include o.outlined-button-styles(
+    // Possibly use a different color from your palette
+    $border-color: palette.$blue-light,
+    $text-color: palette.$blue-light,
+    $hover-color: color.scale(palette.$blue-light, $lightness: 10%),
+    $pressed-color: color.scale(palette.$blue-light, $lightness: -10%),
+
+    // Disabled states
+    $disabled-border-color: palette.$beige-light,
+    $disabled-text-color: palette.$text-on-lavender
+  );
+
+  // Additional site-specific rules
+  margin: 0 8px;
+  // e.g., flex: 1; if you want them to fill a row
+}
+
+.expanded-actions {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 16px;
+
+  // Example usage if you want to style the outlined buttons in the modal
+  .modal-outlined-button {
+    flex: 1;
+  }
+}
+

@@ -1,0 +1,14 @@
+// _filled-button.scss
+// Applies the filled-button-styles mixin and any project-specific overrides
+
+@use "../../base/variables" as vars;
+@use "../../base/color-palette" as palette;
+@use "../mixins/filled-button" as fb;
+
+.filled-button {
+  @include fb.filled-button-styles(
+    $background: vars.$filled-button-bg,
+    $text-color: vars.$filled-button-text
+    // etc. for hover/pressed states, if you want to set them as variables too
+  );
+}

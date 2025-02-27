@@ -1,0 +1,54 @@
+// _outlined-button.scss
+// Generic mixin for Material 3–style Outlined Buttons, relying on your variables
+
+@use "sass:color";
+@use '../../base/variables' as vars;
+@use '../../base/color-palette' as palette;
+
+// Mixin: outlined-button-styles
+// ------------------------------------------------------
+// Param defaults can be changed to your brand color or any relevant color combos.
+@mixin outlined-button-styles(
+  $border-width: 1px,
+  $border-color: palette.$primary-color,
+  $text-color: palette.$primary-color,
+  $hover-color: color.scale($border-color, $lightness: 10%),
+  $pressed-color: color.scale($border-color, $lightness: -10%),
+  $disabled-border-color: vars.$beige-light,
+  $disabled-text-color: color.scale(vars.$beige-light, $lightness: -20%),
+  $border-radius: 8px,
+  $padding: 10px 16px,
+  $font-size: 0.875rem,
+  $font-family: vars.$font-stack,
+  $font-weight: 500,
+  $transition-time: 0.2s
+) {
+  background-color: transparent;
+  color: $text-color;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  padding: $padding;
+  transition: all $transition-time ease-in-out;
+  cursor: pointer;
+  position: relative; // allows overlay-based transitions if desired
+
+  &:hover {
+    border-color: $hover-color;
+    color: $hover-color;
+  }
+
+  &:active {
+    border-color: $pressed-color;
+    color: $pressed-color;
+  }
+
+  &:disabled {
+    border-color: $disabled-border-color;
+    color: $disabled-text-color;
+    cursor: not-allowed;
+    opacity: 0.6; // You can adjust opacity for disabled states
+  }
+}

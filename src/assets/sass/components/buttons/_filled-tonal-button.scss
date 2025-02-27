@@ -1,0 +1,14 @@
+// _filled-tonal-button.scss
+
+@use "../../base/variables" as vars;
+@use "../../base/color-palette" as palette;
+@use "../mixins/filled-tonal-button" as ft;
+
+.filled-tonal-button {
+  @include ft.filled-tonal-button-styles(
+    $background: vars.$filled-tonal-button-bg,
+    $text-color: vars.$filled-tonal-button-text
+    // etc. for hover/pressed if desired
+  );
+}
+
